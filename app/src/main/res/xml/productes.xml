@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<categories>
+	<categoria id="1">
+		<nombre>Bebidas</nombre>
+		<producto id="1">
+			<nombre>Coca Cola</nombre>
+			<precio>1,60</precio>
+			<descripcion>Bebida refrescante con gas con sabor a cola</descripcion>
+			<imagen>..\res\img\imgCocaCola.jpg</imagen>
+		</producto>
+		<producto id="2">
+			<nombre>Fanta Naranja</nombre>
+			<precio>1,60</precio>
+			<descripcion>Bebida refrescante con gas con sabor a naranja</descripcion>
+			<imagen>..\res\img\imgFantaNaranja.jpg</imagen>
+		</producto>
+		<producto id="3">
+			<nombre>Agua mineral</nombre>
+			<precio>1,50</precio>
+			<descripcion>Agua mineral de los lagos de Galicia</descripcion>
+			<imagen>..\res\img\imgAguaMineral.jpg</imagen>
+		</producto>
+		<producto id="4">
+			<nombre>Cerveza</nombre>
+			<precio>1,70</precio>
+			<descripcion>Cerveza proviniente de Granada con baja fermentación.</descripcion>
+			<imagen>..\res\img\imgAlhambra.jpg</imagen>
+		</producto>
+		<producto id="5">
+			<nombre>Nestea al limón</nombre>
+			<precio>1,75</precio>
+			<descripcion>Bebida refrescante con sabor a té al limón.</descripcion>
+			<imagen>..\res\img\imgNestea.jpg</imagen>
+		</producto>
+	</categoria>
+
+	<categoria id="2">
+		<nombre>Cafetería</nombre>
+		<producto id="6">
+			<nombre>Café solo</nombre>
+			<precio>1,25</precio>
+			<descripcion>Taza pequeña con una carga de café sin leche.</descripcion>
+			<imagen>..\res\img\imgCafeSolo.jpg</imagen>
+		</producto>
+		<producto id="7">
+			<nombre>Café cortado</nombre>
+			<precio>1,35</precio>
+			<descripcion>Taza mediana con una carga de café con un chorro de leche.</descripcion>
+			<imagen>..\res\img\imgCafeCortado.jpg</imagen>
+		</producto>
+		<producto id="8">
+			<nombre>Café con leche</nombre>
+			<precio>1,50</precio>
+			<descripcion>Taza grande con doble carga de café y un chorro de leche.</descripcion>
+			<imagen>..\res\img\imgCafeConLeche.jpg</imagen>
+		</producto>
+		<producto id="9">
+			<nombre>Café americano</nombre>
+			<precio>1,40</precio>
+			<descripcion>Taza mediana con doble carga de café sin leche.</descripcion>
+			<imagen>..\res\img\imgCafeAmericano.jpg</imagen>
+		</producto>
+		<producto id="10">
+			<nombre>Carajillo de Baileys</nombre>
+			<precio>1,60</precio>
+			<descripcion>Taza mediana con una carga de café con un chorro de licor Baileys.</descripcion>
+			<imagen>..\res\img\imgCarajillo.jpg</imagen>
+		</producto>
+	</categoria>
+
+	<categoria id="3">
+		<nombre>Ensaladas</nombre>
+		<producto id="11">
+			<nombre>Ensalada Cesar</nombre>
+			<precio>5,95</precio>
+			<descripcion>Ensalada con pollo, picatostes, salsa César y frutos secos</descripcion>
+			<imagen>..\res\img\imgEnsaladaCesar.jpg</imagen>
+		</producto>
+		<producto id="12">
+			<nombre>Ensalada de la huerta</nombre>
+			<precio>4,95</precio>
+			<descripcion>Ensalada con mezclum, brotes, tomate, pepino y aliñada con aceite de oliva y vinagre</descripcion>
+			<imagen>..\res\img\imgEnsaladaHuerta.jpg</imagen>
+		</producto>
+		<producto id="13">
+			<nombre>Ensalada tropical</nombre>
+			<precio>5,49</precio>
+			<descripcion>Ensalada con mezclum, piña y queso. </descripcion>
+			<imagen>..\res\img\imgEnsaladaTropical.jpg</imagen>
+		</producto>
+		<producto id="14">
+			<nombre>Ensalada del mar</nombre>
+			<precio>6,95</precio>
+			<descripcion>Ensalada con mezclum, gambas y tomates.</descripcion>
+			<imagen>..\res\img\imgEnsaladaMar.jpg</imagen>
+		</producto>
+	</categoria>
+
+	<categoria id="4">
+		<nombre>Pastas</nombre>
+		<producto id="15">
+			<nombre>Espaguetis a la carbonara</nombre>
+			<precio>5,95</precio>
+			<descripcion>Espaguettis con nata, bacon, huevo y nuez moscada</descripcion>
+			<imagen>..\res\img\imgEspaguetiCarbonara.jpg</imagen>
+		</producto>
+		<producto id="16">
+			<nombre>Macarrones a la boloñesa</nombre>
+			<precio>5,95</precio>
+			<descripcion>Macarrones con tomate y carne picada mixta de ternera y cerdo y queso parmesan.o</descripcion>
+			<imagen>..\res\img\imgMacarronesBolonesa.jpg</imagen>
+		</producto>
+		<producto id="17">
+			<nombre>Pasta con frutos de mar</nombre>
+			<precio>7,49</precio>
+			<descripcion>Pasta a elección con gambas, mejillones y escamarlán.</descripcion>
+			<imagen>..\res\img\imgPastaConMarisco.jpg</imagen>
+		</producto>
+	</categoria>
+
+	<categoria id="5">
+		<nombre>Carnes</nombre>
+		<producto id="18">
+			<nombre>Solomillo de cerdo ibérico a la pimienta</nombre>
+			<precio>12,95</precio>
+			<descripcion>Solomillo de cerdo ibérico con salsa de pimienta verde</descripcion>
+			<imagen>..\res\img\imgSolomilloCerdo.jpg</imagen>
+		</producto>
+		<producto id="19">
+			<nombre>Abanico ibérico</nombre>
+			<precio>11,95</precio>
+			<descripcion>Abanico de cerdo ibérico con patatas de guarnaición.</descripcion>
+			<imagen>..\res\img\imgAbanicoCerdo.jpg</imagen>
+		</producto>
+		<producto id="20">
+			<nombre>Entrecotte de ternera wagyu a la brasa</nombre>
+			<precio>23,49</precio>
+			<descripcion>Entrecotte de ternera WAGYU a la brasa con guarnición de patatas al caliu.</descripcion>
+			<imagen>..\res\img\imgEntrecotteBrasa.jpg</imagen>
+		</producto>
+		<producto id="21">
+			<nombre>Solomillo de ternera a la brasa ahumado</nombre>
+			<precio>23,95</precio>
+			<descripcion>Solomillo de ternera a la brasa cocinado durante horas con sabor ahumado.</descripcion>
+			<imagen>..\res\img\imgSolomilloTernera.jpg</imagen>
+		</producto>
+	</categoria>
+
+	<categoria id="6">
+		<nombre>Pescados</nombre>
+		<producto id="22">
+			<nombre>Lubina a la plancha con limón y ajetes</nombre>
+			<precio>16,49</precio>
+			<descripcion>Lubina hecha a la plancha con jugo de limón y ajetes braseados</descripcion>
+			<imagen>..\res\img\imgLubinaAjetes.jpg</imagen>
+		</producto>
+		<producto id="23">
+			<nombre>Emperador con salsa verde</nombre>
+			<precio>21,99</precio>
+			<descripcion>Emperador hecho a la plancha con deliciosa salsa verde hecha a partir de vino blanco, ajo, limón, perejil y cebolla.</descripcion>
+			<imagen>..\res\img\imgEmperador.jpg</imagen>
+		</producto>
+		<producto id="24">
+			<nombre>Merluza a la gallega</nombre>
+			<precio>15,95</precio>
+			<descripcion>Merluza con salsa gallega de tomate y base de patatas al horno.</descripcion>
+			<imagen>..\res\img\imgMerluzaGallega.jpg</imagen>
+		</producto>
+	</categoria>
+
+	<categoria id="7">
+		<nombre>Postres</nombre>
+		<producto id="25">
+			<nombre>Coulant de chocolate</nombre>
+			<precio>7,49</precio>
+			<descripcion>Pequeño pastel de chocolate relleno de foundant de chocolate suizo negro.</descripcion>
+			<imagen>..\res\img\imgCoulant.jpg</imagen>
+		</producto>
+		<producto id="26">
+			<nombre>Tarta de queso New York</nombre>
+			<precio>5,49</precio>
+			<descripcion>Tarta de queso pintada con mermelada de frambuesa y base de galleta caramelizada.</descripcion>
+			<imagen>..\res\img\imgTartaNY.jpg</imagen>
+		</producto>
+		<producto id="27">
+			<nombre>Crema catalana</nombre>
+			<precio>4,95</precio>
+			<descripcion>Crema catalana casera con azúcar cremat.</descripcion>
+			<imagen>..\res\img\imgCremaCatalana.jpg</imagen>
+		</producto>
+	</categoria>
+</categories>

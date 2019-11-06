@@ -1,0 +1,11 @@
+<config>
+  <server>
+      <ip></ip>
+  </server>
+  <pda>
+    <nom></nom>
+  </pda>
+  <mesas>
+      <cantidad></cantidad>
+  </mesas>
+</config>
