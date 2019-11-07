@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListaCategorias">
+    tools:context=".ListaProductos">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/nombre_productos"
         android:layout_width="163dp"
         android:layout_height="33dp"
         android:layout_marginTop="40dp"
-        android:text="@string/categorias"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -30,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_productos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
