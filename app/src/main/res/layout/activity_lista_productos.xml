@@ -14,15 +14,15 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lista"
+        app:layout_constraintBottom_toTopOf="@+id/lista_productos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lista"
-        android:layout_width="315dp"
-        android:layout_height="443dp"
+        android:id="@+id/lista_productos"
+        android:layout_width="415dp"
+        android:layout_height="441dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"

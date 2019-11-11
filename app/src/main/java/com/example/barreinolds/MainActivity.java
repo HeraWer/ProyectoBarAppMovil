@@ -38,31 +38,29 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void leerCatXML() throws IOException, XmlPullParserException {
         XmlPullParser xrp = getResources().getXml(R.xml.productes);
         xrp.next();
         int i = 0;
         int event = xrp.getEventType();
-        while (event != XmlPullParser.END_DOCUMENT){
+        while (event != XmlPullParser.END_DOCUMENT) {
             String etiqueta = null;
-            switch(event){
+            switch (event) {
                 case XmlPullParser.START_DOCUMENT:
                     listaCategoria = new ArrayList<Category>();
                     break;
                 case XmlPullParser.START_TAG:
                     etiqueta = xrp.getName();
-                    if(etiqueta.equals("categoria")){
+                    if (etiqueta.equals("categoria")) {
                         listaProductos = new ArrayList<Product>();
                         cat = new Category();
                         cat.setId(xrp.getAttributeValue(null, "id"));
-                    }else if(etiqueta != null){
-                        if (etiqueta.equals("nombre"))
-                        {
+                    } else if (etiqueta != null) {
+                        if (etiqueta.equals("nombre")) {
                             cat.setnCategory(xrp.nextText());
                             listaCategoria.add(cat);
-                        }
-                        else if (etiqueta.equals("producto"))
-                        {
+                        } else if (etiqueta.equals("producto")) {
                             p = new Product();
                             p.setId(Integer.parseInt(xrp.getAttributeValue(null, "id")));
                             xrp.next();
@@ -81,16 +79,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
 
-
             }
             event = xrp.next();
         }
     }
 
-    public void listaCategoriaNombres(){
+    public void listaCategoriaNombres() {
 
-        for(Category cat : listaCategoria){
-           listaCategoriaNombres.add(cat.getnCategory());
+        for (Category cat : listaCategoria) {
+            listaCategoriaNombres.add(cat.getnCategory());
 
         }
 
@@ -102,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
             listaProductos.add();
         }
     }*/
-
-
 
 
 }
