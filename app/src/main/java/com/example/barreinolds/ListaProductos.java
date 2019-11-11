@@ -29,7 +29,7 @@ public class ListaProductos extends AppCompatActivity {
             ArrayList<String> categorias = listaProductos(bundle.getString("Categoria"));
             ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, categorias);
-            listView = (ListView) findViewById(R.id.lista);
+            listView = (ListView) findViewById(R.id.listaM);
             listView.setAdapter(itemsAdapter);
         }
 

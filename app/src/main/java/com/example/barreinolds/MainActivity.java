@@ -1,5 +1,6 @@
 package com.example.barreinolds;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Category> listaCategoria;
     Category cat;
     Product p;
+    Pedido pep = new Pedido();
     ArrayList<Product> listaProductos;
     ArrayList<String> listaCategoriaNombres; // RECOGIA LOS NOMBRES DE LA LISTA CATEGORIA
 
@@ -28,13 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             leerCatXML();
+            pep.crearXML("1", getApplicationContext(), listaProductos);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
-
-        listaCategoriaNombres();
 
 
     }
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                             p.setDescription(xrp.nextText());
                             xrp.next();
                             p.setImage(xrp.nextText());
+                            p.setCantidad(0);
                             listaProductos.add(p);
                             cat.setListProducts(listaProductos);
                         }
@@ -86,26 +88,4 @@ public class MainActivity extends AppCompatActivity {
             event = xrp.next();
         }
     }
-
-    public void listaCategoriaNombres(){
-
-        for(Category cat : listaCategoria){
-           listaCategoriaNombres.add(cat.getnCategory());
-
-        }
-
-    }
-
-    /*public void listaProductos(String nameCat){
-
-        for(Product p : productes){
-            listaProductos.add();
-        }
-    }*/
-
-
-
-
 }
-
-

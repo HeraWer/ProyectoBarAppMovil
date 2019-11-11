@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListaCategorias">
+    tools:context=".Pedido">
 
     <TextView
         android:id="@+id/nombre_categoria"
         android:layout_width="163dp"
         android:layout_height="33dp"
         android:layout_marginTop="40dp"
-        android:text="@string/categorias"
+        android:text="@string/mesas"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"

@@ -6,6 +6,6 @@
     <nom></nom>
   </pda>
   <mesas>
-      <cantidad></cantidad>
+      <cantidad>4</cantidad>
   </mesas>
 </config>

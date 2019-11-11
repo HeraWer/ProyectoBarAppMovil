@@ -7,6 +7,7 @@ public class Product {
     private String name;
     private String description;
     private String price;
+    private int cantidad;
     private String image;
 
     public int getId() {
@@ -39,6 +40,14 @@ public class Product {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getImage() {

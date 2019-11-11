@@ -27,7 +27,7 @@ public class ListaCategorias extends AppCompatActivity {
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, categorias);
 
-        listView = (ListView) findViewById(R.id.lista);
+        listView = (ListView) findViewById(R.id.listaM);
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

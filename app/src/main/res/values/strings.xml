@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BarReinolds</string>
     <string name="categorias">Categorias</string>
+    <string name="mesas">Mesas</string>
 </resources>
