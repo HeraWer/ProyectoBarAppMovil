@@ -9,11 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pedido"></activity>
-        <activity android:name=".Mesas"></activity>
+        <activity android:name=".Pedido" />
         <activity android:name=".ListaProductos" />
         <activity android:name=".ListaCategorias" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Mesas">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

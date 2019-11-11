@@ -24,8 +24,6 @@ public class Mesas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesas);
 
-        MainActivity ma = new MainActivity();
-
         // Aqui llamo al metodo para leer el XML con el Try-Catch
         try {
             leerConfigMesas();
@@ -45,7 +43,7 @@ public class Mesas extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ListaCategorias.class);
                 startActivity(intent);
             }
         });
