@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.example.barreinolds.ListaCategorias.lp;
@@ -28,11 +29,18 @@ public class ListaProductos extends AppCompatActivity {
     TextView titulo;
     ArrayList<Product> productos;
     Ticket ticket;
+    ConnectionClass connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_productos);
+
+        try {
+            connection = new ConnectionClass();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         ticket = new Ticket();
         ticket.setMesa(numMesa);
@@ -84,6 +92,11 @@ public class ListaProductos extends AppCompatActivity {
                             if (producto.getCantidad() <= 0) {
                                 ticket.getProductosComanda().remove(producto);
                             }
+                            try {
+                                connection.sendTicket(ticket);
+                            } catch (IOException e) {
+                                Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 });
@@ -97,6 +110,11 @@ public class ListaProductos extends AppCompatActivity {
                             ticket.getProductosComanda().set(ticket.getProductosComanda().indexOf(producto), producto);
                         } else {
                             ticket.getProductosComanda().add(producto);
+                        }
+                        try {
+                            connection.sendTicket(ticket);
+                        } catch (IOException e) {
+                            Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

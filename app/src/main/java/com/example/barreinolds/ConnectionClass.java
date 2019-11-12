@@ -11,7 +11,7 @@ import java.net.InetAddress;
 
 public class ConnectionClass {
 
-    public static final int PORT = 1234;
+    public static final int PORT = 7412;
     private InetAddress serverIP;
     private DatagramSocket dSocket;
     private DatagramPacket dPacket;
@@ -21,7 +21,7 @@ public class ConnectionClass {
 
 
     public ConnectionClass() throws IOException {
-        byte[] addr = {(byte) 192, (byte) 168, 40, 36};
+        byte[] addr = {(byte) 192, (byte) 168, 40, 22};
         serverIP = InetAddress.getByAddress(addr);
 
         dSocket = new DatagramSocket(PORT);
