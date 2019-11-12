@@ -34,12 +34,12 @@ public class ListaCategorias extends AppCompatActivity {
     static ArrayList<Product> lp;
     Category cat;
     Product p;
+    Pedido pe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_categorias);
-
         getSupportActionBar().setTitle("Bar Reinolds");
         try {
             leerCatXML();
@@ -48,6 +48,9 @@ public class ListaCategorias extends AppCompatActivity {
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
+        pe = new Pedido();
+        pe.crearXML(getApplicationContext(), productos);
+
         CustomAdapter customAdapter = new CustomAdapter(this, categorias);
         listView = (ListView) findViewById(R.id.lista_categorias);
         listView.setAdapter(customAdapter);
@@ -90,7 +93,7 @@ public class ListaCategorias extends AppCompatActivity {
                             xrp.next();
                             p.setName(xrp.nextText());
                             xrp.next();
-                            p.setPrice(xrp.nextText());
+                            p.setPrice(xrp.nextText().replace(",", "."));
                             xrp.next();
                             p.setDescription(xrp.nextText());
                             xrp.next();

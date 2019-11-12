@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class Mesas extends AppCompatActivity {
 
+    public static int numMesa;
     ArrayList<String> listaMesas;
     ListView listView;
     private String etiqueta = null;
@@ -44,6 +45,7 @@ public class Mesas extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ListaCategorias.class);
+                numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
                 startActivity(intent);
             }
         });
