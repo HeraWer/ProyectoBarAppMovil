@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Mesas extends AppCompatActivity {
 
-    public static int numMesa;
+    static int numMesa;
     ArrayList<String> listaMesas;
     ListView listView;
     private String etiqueta = null;

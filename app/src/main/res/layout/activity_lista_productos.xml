@@ -7,20 +7,20 @@
     tools:context=".ListaProductos">
 
     <TextView
-        android:id="@+id/nombre_productos"
+        android:id="@+id/nombre_pedido"
         android:layout_width="163dp"
         android:layout_height="33dp"
         android:layout_marginTop="40dp"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lista_productos"
+        app:layout_constraintBottom_toTopOf="@+id/lista_pedido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lista_productos"
+        android:id="@+id/lista_pedido"
         android:layout_width="415dp"
         android:layout_height="441dp"
         android:layout_marginTop="30dp"
@@ -29,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_productos" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_pedido" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

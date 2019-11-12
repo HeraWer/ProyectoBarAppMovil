@@ -1,8 +1,5 @@
 package com.example.barreinolds;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -14,38 +11,42 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 
 import static com.example.barreinolds.ListaCategorias.lp;
 
-public class ListaProductos extends AppCompatActivity {
+public class ListaPedido extends AppCompatActivity {
 
     ListView listView;
     TextView titulo;
     ArrayList<Product> productos;
+    Ticket ticket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_productos);
+        setContentView(R.layout.activity_lista_pedido);
         titulo = findViewById(R.id.nombre_pedido);
-        getSupportActionBar().setTitle("Bar Reinolds");
-
+        ticket = new Ticket();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            titulo.setText(bundle.getString("Categoria"));
-            productos = lp;
+            titulo.setText(bundle.getString("Pedido"));
+            productos = ticket.getProductosComanda();
 //            ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
 //                    android.R.layout.simple_list_item_1, categorias);
 
             CustomAdapter customAdapter = new CustomAdapter(this, productos);
             listView = (ListView) findViewById(R.id.lista_pedido);
             listView.setAdapter(customAdapter);
-
-
         } else {
-            Toast.makeText(ListaProductos.this, "Lista vacia", Toast.LENGTH_LONG).show();
+            Toast.makeText(ListaPedido.this, "Lista vacia", Toast.LENGTH_LONG).show();
         }
+
 
     }
 
@@ -72,7 +73,6 @@ public class ListaProductos extends AppCompatActivity {
                 Drawable imagenDra = ContextCompat.getDrawable(getContext(), imageResource);
 
                 imgProducto.setImageDrawable(imagenDra);
-//                imgProducto.setImageResource(imageResource);
                 nombreProducto.setText(producto.getName());
                 precioProducto.setText(producto.getPrice() + "€");
             }
