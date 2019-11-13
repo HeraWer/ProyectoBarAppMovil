@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -42,9 +43,9 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         }
     }
 
-    private ArrayList<Product> productsAdapterArray;
+    static ArrayList<Product> productsAdapterArray;
 
-    public TicketProductsAdaper(ArrayList<Product> products){
+    public TicketProductsAdaper(ArrayList<Product> products) {
         this.productsAdapterArray = products;
     }
 
@@ -91,6 +92,8 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
 
     @Override
     public int getItemCount() {
+
         return productsAdapterArray.size();
     }
+
 }

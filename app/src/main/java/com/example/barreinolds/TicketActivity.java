@@ -1,11 +1,17 @@
 package com.example.barreinolds;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import static com.example.barreinolds.TicketProductsAdaper.productsAdapterArray;
 
 public class TicketActivity extends AppCompatActivity {
 
@@ -21,6 +27,7 @@ public class TicketActivity extends AppCompatActivity {
 
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
         TicketProductsAdaper adapter = new TicketProductsAdaper(getTicket(Mesas.numMesa).getProductosComanda());
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(productosRecyclerView);
         productosRecyclerView.setAdapter(adapter);
         // Set layout manager to position the items
         productosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -38,4 +45,17 @@ public class TicketActivity extends AppCompatActivity {
     }
 
 
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallback =
+            new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+                @Override
+                public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                    return false;
+                }
+
+                @Override
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                   productsAdapterArray.remove(viewHolder.getAdapterPosition());
+                    //adapter.notifyDataSetChanged();
+                }
+            };
 }
