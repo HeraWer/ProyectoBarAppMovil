@@ -35,9 +35,6 @@ public class ListaProductos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_productos);
-<<<<<<< HEAD
-        titulo = findViewById(R.id.nombre_pedido);
-=======
 
         try {
             connection = new ConnectionClass();
@@ -48,8 +45,7 @@ public class ListaProductos extends AppCompatActivity {
         ticket = new Ticket();
         ticket.setMesa(numMesa);
 
-        titulo = findViewById(R.id.nombre_productos);
->>>>>>> 8ffab1503291adbbce9971412dc590fe6b27fa29
+        titulo = findViewById(R.id.nombre_producto);
         getSupportActionBar().setTitle("Bar Reinolds");
 
         Bundle bundle = getIntent().getExtras();
@@ -58,10 +54,8 @@ public class ListaProductos extends AppCompatActivity {
             productos = lp;
 
             CustomAdapter customAdapter = new CustomAdapter(this, productos);
-            listView = (ListView) findViewById(R.id.lista_pedido);
+            listView = (ListView) findViewById(R.id.lista_producto);
             listView.setAdapter(customAdapter);
-
-
         } else {
             Toast.makeText(ListaProductos.this, "Lista vacia", Toast.LENGTH_LONG).show();
         }
