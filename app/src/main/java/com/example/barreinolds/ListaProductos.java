@@ -30,6 +30,7 @@ public class ListaProductos extends AppCompatActivity {
     TextView titulo;
     ArrayList<Product> productos;
     public Ticket ticket;
+    Pedido p;
     //ConnectionClass connection;
 
     @Override
@@ -108,6 +109,8 @@ public class ListaProductos extends AppCompatActivity {
                                 Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
                             }
                         }
+                        p = new Pedido();
+                        p.crearXML(getApplicationContext(), ticket.getProductosComanda());
                     }
                 });
 
@@ -129,6 +132,9 @@ public class ListaProductos extends AppCompatActivity {
                         } catch (IOException e) {
                             Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
                         }
+                        p = new Pedido();
+                        p.crearXML(getApplicationContext(), ticket.getProductosComanda());
+
                     }
                 });
 
