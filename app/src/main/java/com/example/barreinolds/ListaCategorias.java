@@ -2,20 +2,16 @@ package com.example.barreinolds;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,12 +31,26 @@ public class ListaCategorias extends AppCompatActivity {
     Category cat;
     Product p;
     Pedido pe;
+    Button b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_categorias);
         getSupportActionBar().setTitle("Bar Reinolds");
+
+        b = findViewById(R.id.verComandaButton);
+
+        b.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                if(lookForTicketTable(Mesas.numMesa)) {
+                    Intent i = new Intent(ListaCategorias.this, TicketActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
+
         try {
             leerCatXML();
         } catch (IOException e) {
@@ -64,6 +74,14 @@ public class ListaCategorias extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public boolean lookForTicketTable(int numMesa){
+        for(Ticket t : Mesas.tickets) {
+            if (t.getMesa() == numMesa)
+                return true;
+        }
+            return false;
     }
 
     public void leerCatXML() throws IOException, XmlPullParserException {
