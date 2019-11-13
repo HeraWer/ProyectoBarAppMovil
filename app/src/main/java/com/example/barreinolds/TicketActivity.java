@@ -54,7 +54,9 @@ public class TicketActivity extends AppCompatActivity {
 
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                   productsAdapterArray.remove(viewHolder.getAdapterPosition());
+                   
+                    productsAdapterArray.remove(viewHolder.getAdapterPosition());
+
                     //adapter.notifyDataSetChanged();
                 }
             };

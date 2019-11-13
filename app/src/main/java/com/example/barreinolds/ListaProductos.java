@@ -78,6 +78,7 @@ public class ListaProductos extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             final Product producto = getItem(position);
 
+
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.customlayout_productos, parent, false);
@@ -88,6 +89,8 @@ public class ListaProductos extends AppCompatActivity {
                 Button restarProducto = convertView.findViewById(R.id.boton_resta);
                 Button sumarProducto = convertView.findViewById(R.id.boton_suma);
                 final TextView cantidadProducto = convertView.findViewById(R.id.cantidad_producto);
+     //           if(producto != null)
+                    cantidadProducto.setText(String.valueOf(producto.getCantidad()));
 
                 restarProducto.setOnClickListener(new View.OnClickListener() {
                     @Override
