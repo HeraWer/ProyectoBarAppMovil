@@ -22,28 +22,33 @@ import java.util.ArrayList;
 
 import static com.example.barreinolds.ListaCategorias.lp;
 import static com.example.barreinolds.Mesas.numMesa;
+import static com.example.barreinolds.Mesas.tickets;
 
 public class ListaProductos extends AppCompatActivity {
 
     ListView listView;
     TextView titulo;
     ArrayList<Product> productos;
-    Ticket ticket;
-    ConnectionClass connection;
+    public Ticket ticket;
+    //ConnectionClass connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_productos);
 
-        try {
+        /*try {
             connection = new ConnectionClass();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        ticket = new Ticket();
+        ticket = getTicket(numMesa);
+        if(ticket == null){
+            ticket = new Ticket();
+        }
         ticket.setMesa(numMesa);
+        Mesas.tickets.add(ticket);
 
         titulo = findViewById(R.id.nombre_producto);
         getSupportActionBar().setTitle("Bar Reinolds");
@@ -72,6 +77,8 @@ public class ListaProductos extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             final Product producto = getItem(position);
+
+
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.customlayout_productos, parent, false);
@@ -82,6 +89,8 @@ public class ListaProductos extends AppCompatActivity {
                 Button restarProducto = convertView.findViewById(R.id.boton_resta);
                 Button sumarProducto = convertView.findViewById(R.id.boton_suma);
                 final TextView cantidadProducto = convertView.findViewById(R.id.cantidad_producto);
+     //           if(producto != null)
+                    cantidadProducto.setText(String.valueOf(producto.getCantidad()));
 
                 restarProducto.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -93,6 +102,7 @@ public class ListaProductos extends AppCompatActivity {
                                 ticket.getProductosComanda().remove(producto);
                             }
                             try {
+                                ConnectionClass connection = new ConnectionClass();
                                 connection.sendTicket(ticket);
                             } catch (IOException e) {
                                 Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
@@ -112,7 +122,10 @@ public class ListaProductos extends AppCompatActivity {
                             ticket.getProductosComanda().add(producto);
                         }
                         try {
-                            connection.sendTicket(ticket);
+                            if(ticket != null) {
+                                ConnectionClass connection = new ConnectionClass();
+                                connection.sendTicket(ticket);
+                            }
                         } catch (IOException e) {
                             Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
                         }
@@ -129,5 +142,28 @@ public class ListaProductos extends AppCompatActivity {
             }
             return convertView;
         }
+
+
+    }
+
+    protected void onResume() {
+        super.onResume();
+        ticket = getTicket(numMesa);
+        if(ticket == null)
+            ticket = new Ticket();
+        try {
+            ConnectionClass connection = new ConnectionClass();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Ticket getTicket(int numMesa){
+        for(Ticket t : Mesas.tickets){
+            if(t.getMesa() == numMesa){
+                return t;
+            }
+        }
+        return null;
     }
 }

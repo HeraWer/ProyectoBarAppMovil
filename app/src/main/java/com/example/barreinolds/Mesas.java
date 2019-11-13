@@ -17,6 +17,7 @@ public class Mesas extends AppCompatActivity {
 
     static int numMesa;
     ArrayList<String> listaMesas;
+    public static ArrayList<Ticket> tickets;
     ListView listView;
     private String etiqueta = null;
 
@@ -24,6 +25,7 @@ public class Mesas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesas);
+        tickets = new ArrayList<Ticket>();
 
         // Aqui llamo al metodo para leer el XML con el Try-Catch
         try {
