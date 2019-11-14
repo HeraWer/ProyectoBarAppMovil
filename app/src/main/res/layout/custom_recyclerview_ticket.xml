@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:baselineAligned="false"
-    android:orientation="horizontal"
-    android:paddingTop="20dp"
-    android:paddingBottom="20dp"
-    android:background="@drawable/border"
     android:layout_marginBottom="10dp"
-    >
+    android:background="@drawable/shadow"
+    android:baselineAligned="false"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:elevation="2dp"
+    android:orientation="horizontal"
+    android:outlineProvider="bounds"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/productImageTicket"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:adjustViewBounds="true"
         android:gravity="center_horizontal|center_vertical"
@@ -23,14 +28,20 @@
     <Space
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_weight="1"></Space>
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/productImageTicket"
+        android:id="@+id/s1"/>
 
     <TextView
         android:id="@+id/productNameTicket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Producto 1" />
+        android:lines="3"
+        android:maxWidth="150dp"
+        android:paddingEnd="5dp"
+        android:text="Producto 1"
+        />
 
     <Space
         android:layout_width="0dp"
@@ -40,7 +51,7 @@
     <TextView
         android:id="@+id/productQuantityTicket"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal|center_vertical"
         android:text="5" />
 
@@ -52,7 +63,7 @@
     <TextView
         android:id="@+id/productPriceTicket"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal|center_vertical"
         android:text="7,99€" />
 
@@ -64,10 +75,28 @@
     <TextView
         android:id="@+id/productTotalTicket"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginRight="20dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="39,95€" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"></Space>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:background="#01000000"
+        android:gravity="center_horizontal|center_vertical"
+        android:maxWidth="30dp"
+        android:maxHeight="30dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/deleteproduct"
+        android:id="@+id/productDeleteTicket"/>
 
 
 </LinearLayout>

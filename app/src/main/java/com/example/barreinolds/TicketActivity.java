@@ -17,6 +17,7 @@ public class TicketActivity extends AppCompatActivity {
 
     TextView ticketTitle;
     RecyclerView productosRecyclerView;
+    TicketProductsAdaper adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class TicketActivity extends AppCompatActivity {
         ticketTitle.setText("Pedido mesa " + Mesas.numMesa);
 
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
-        TicketProductsAdaper adapter = new TicketProductsAdaper(getTicket(Mesas.numMesa).getProductosComanda());
+        adapter = new TicketProductsAdaper(getTicket(Mesas.numMesa).getProductosComanda());
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(productosRecyclerView);
         productosRecyclerView.setAdapter(adapter);
         // Set layout manager to position the items
@@ -56,8 +57,7 @@ public class TicketActivity extends AppCompatActivity {
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                    
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
-
-                    //adapter.notifyDataSetChanged();
+                    adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 }
             };
 }

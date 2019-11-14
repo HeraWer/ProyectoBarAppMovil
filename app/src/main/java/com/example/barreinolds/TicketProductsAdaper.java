@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         public TextView productQuantityTicket;
         public TextView productPriceTicket;
         public TextView productTotalTicket;
+        public ImageButton deleteProduct;
         public Context c;
 
         // We also create a constructor that accepts the entire item row
@@ -40,6 +43,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
             productQuantityTicket = itemView.findViewById(R.id.productQuantityTicket);
             productPriceTicket = itemView.findViewById(R.id.productPriceTicket);
             productTotalTicket = itemView.findViewById(R.id.productTotalTicket);
+            deleteProduct = itemView.findViewById(R.id.productDeleteTicket);
         }
     }
 
@@ -67,6 +71,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = productsAdapterArray.get(position);
+        final ViewHolder holderForOnClick = holder;
 
         // Set item views based on your views and data model
         ImageView imageImageView = holder.productImageTicket;
@@ -87,6 +92,17 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
 
         TextView totalTextView = holder.productTotalTicket;
         totalTextView.setText(String.valueOf(Float.parseFloat(product.getPrice()) * product.getCantidad()));
+
+        ImageButton deleteImageButton = holder.deleteProduct;
+        deleteImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productsAdapterArray.remove(holderForOnClick.getAdapterPosition());
+                TicketProductsAdaper.this.notifyItemRemoved(holderForOnClick.getAdapterPosition());
+            }
+        });
+
+
 
     }
 
