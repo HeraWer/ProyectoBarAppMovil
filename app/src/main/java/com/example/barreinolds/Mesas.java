@@ -40,9 +40,9 @@ public class Mesas extends AppCompatActivity {
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listaMesas);
 
-        listView = (ListView) findViewById(R.id.listaM);
+        listView = (ListView) findViewById(R.id.lista_mesas);
         listView.setAdapter(itemsAdapter);
-
+        Bundle bundle = getIntent().getExtras();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

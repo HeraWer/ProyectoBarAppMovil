@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 
 import static com.example.barreinolds.ListaCategorias.lp;
 import static com.example.barreinolds.Mesas.numMesa;
-import static com.example.barreinolds.Mesas.tickets;
 
 public class ListaProductos extends AppCompatActivity {
 
@@ -31,7 +31,7 @@ public class ListaProductos extends AppCompatActivity {
     ArrayList<Product> productos;
     public Ticket ticket;
     Pedido p;
-    //ConnectionClass connection;
+    ConnectionClass connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +45,11 @@ public class ListaProductos extends AppCompatActivity {
         }*/
 
         ticket = getTicket(numMesa);
-        if(ticket == null){
+        if (ticket == null) {
             ticket = new Ticket();
         }
         ticket.setMesa(numMesa);
+
         Mesas.tickets.add(ticket);
 
         titulo = findViewById(R.id.nombre_producto);
@@ -90,8 +91,8 @@ public class ListaProductos extends AppCompatActivity {
                 Button restarProducto = convertView.findViewById(R.id.boton_resta);
                 Button sumarProducto = convertView.findViewById(R.id.boton_suma);
                 final TextView cantidadProducto = convertView.findViewById(R.id.cantidad_producto);
-     //           if(producto != null)
-                    cantidadProducto.setText(String.valueOf(producto.getCantidad()));
+                //           if(producto != null)
+                cantidadProducto.setText(String.valueOf(producto.getCantidad()));
 
                 restarProducto.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -102,12 +103,7 @@ public class ListaProductos extends AppCompatActivity {
                             if (producto.getCantidad() <= 0) {
                                 ticket.getProductosComanda().remove(producto);
                             }
-                            try {
-                                ConnectionClass connection = new ConnectionClass();
-                                connection.sendTicket(ticket);
-                            } catch (IOException e) {
-                                Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
-                            }
+                            new enviarTicket().execute(ticket);
                         }
                         p = new Pedido();
                         p.crearXML(getApplicationContext(), ticket.getProductosComanda());
@@ -124,13 +120,8 @@ public class ListaProductos extends AppCompatActivity {
                         } else {
                             ticket.getProductosComanda().add(producto);
                         }
-                        try {
-                            if(ticket != null) {
-                                ConnectionClass connection = new ConnectionClass();
-                                connection.sendTicket(ticket);
-                            }
-                        } catch (IOException e) {
-                            Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
+                        if (ticket != null) {
+                            new enviarTicket().execute(ticket);
                         }
                         p = new Pedido();
                         p.crearXML(getApplicationContext(), ticket.getProductosComanda());
@@ -155,21 +146,35 @@ public class ListaProductos extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ticket = getTicket(numMesa);
-        if(ticket == null)
+        if (ticket == null)
             ticket = new Ticket();
-        try {
-            ConnectionClass connection = new ConnectionClass();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            connection = new ConnectionClass();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
-    public Ticket getTicket(int numMesa){
-        for(Ticket t : Mesas.tickets){
-            if(t.getMesa() == numMesa){
+    public Ticket getTicket(int numMesa) {
+        for (Ticket t : Mesas.tickets) {
+            if (t.getMesa() == numMesa) {
                 return t;
             }
         }
         return null;
+    }
+
+    class enviarTicket extends AsyncTask<Ticket, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Ticket... tickets) {
+            try {
+                connection = new ConnectionClass();
+                connection.sendTicket(ticket);
+            } catch (IOException e) {
+                Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
+            }
+            return null;
+        }
     }
 }

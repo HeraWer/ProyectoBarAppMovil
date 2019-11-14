@@ -11,11 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TicketActivity"></activity>
+        <activity android:name=".TicketActivity" />
         <activity android:name=".Pedido" />
         <activity android:name=".ListaProductos" />
         <activity android:name=".ListaCategorias" />
-        <activity android:name=".Mesas">
+        <activity android:name=".Mesas" />
+        <activity android:name=".Empleados">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

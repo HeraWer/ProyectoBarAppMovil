@@ -18,14 +18,17 @@ public class Ticket implements Serializable {
     }
 
     public int getMesa() {
+
         return mesa;
     }
 
     public void setMesa(int mesa) {
+
         this.mesa = mesa;
     }
 
     public ArrayList<Product> getProductosComanda() {
+
         return productosComanda;
     }
 
