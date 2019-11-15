@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Ticket implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private ArrayList<Product> productosComanda;
     private int mesa;
 

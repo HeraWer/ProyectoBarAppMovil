@@ -11,6 +11,20 @@ public class Product implements Serializable {
     private String price;
     private int cantidad;
     private String image;
+    private static final long serialVersionUID = 2L;
+
+    public Product(int id, String name, String description, String price, int cantidad, String image) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.cantidad = cantidad;
+        this.image = image;
+    }
+
+    public Product() {
+        cantidad = 0;
+    }
 
     public int getId() {
         return id;
