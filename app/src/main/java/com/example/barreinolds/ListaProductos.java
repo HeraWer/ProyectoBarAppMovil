@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.example.barreinolds.ListaCategorias.lp;
@@ -31,18 +29,11 @@ public class ListaProductos extends AppCompatActivity {
     ArrayList<Product> productos;
     public Ticket ticket;
     Pedido p;
-    ConnectionClass connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_productos);
-
-        /*try {
-            connection = new ConnectionClass();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
 
         ticket = getTicket(numMesa);
         if (ticket == null) {
@@ -103,7 +94,7 @@ public class ListaProductos extends AppCompatActivity {
                             if (producto.getCantidad() <= 0) {
                                 ticket.getProductosComanda().remove(producto);
                             }
-                            new enviarTicket().execute(ticket);
+                            new EnviarTicket().execute(ticket);
                         }
                         p = new Pedido();
                         p.crearXML(getApplicationContext(), ticket.getProductosComanda());
@@ -121,7 +112,7 @@ public class ListaProductos extends AppCompatActivity {
                             ticket.getProductosComanda().add(producto);
                         }
                         if (ticket != null) {
-                            new enviarTicket().execute(ticket);
+                            new EnviarTicket().execute(ticket);
                         }
                         p = new Pedido();
                         p.crearXML(getApplicationContext(), ticket.getProductosComanda());
@@ -146,13 +137,17 @@ public class ListaProductos extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ticket = getTicket(numMesa);
+        for (Product ticketProduct : ticket.getProductosComanda()) {
+            for (Product catProduct : productos) {
+                if (ticketProduct.getId() == catProduct.getId()) {
+                    break;
+                } else if (ticketProduct.getCantidad() >= 0) {
+                    catProduct.setCantidad(0);
+                }
+            }
+        }
         if (ticket == null)
             ticket = new Ticket();
-//        try {
-//            connection = new ConnectionClass();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     public Ticket getTicket(int numMesa) {
@@ -164,17 +159,4 @@ public class ListaProductos extends AppCompatActivity {
         return null;
     }
 
-    class enviarTicket extends AsyncTask<Ticket, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Ticket... tickets) {
-            try {
-                connection = new ConnectionClass();
-                connection.sendTicket(ticket);
-            } catch (IOException e) {
-                Toast.makeText(ListaProductos.this, "Conexion rechazada", Toast.LENGTH_LONG).show();
-            }
-            return null;
-        }
-    }
 }

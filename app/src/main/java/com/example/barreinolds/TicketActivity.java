@@ -36,9 +36,9 @@ public class TicketActivity extends AppCompatActivity {
 
     }
 
-    public Ticket getTicket(int numMesa){
-        for(Ticket t : Mesas.tickets){
-            if(t.getMesa() == numMesa){
+    public Ticket getTicket(int numMesa) {
+        for (Ticket t : Mesas.tickets) {
+            if (t.getMesa() == numMesa) {
                 return t;
             }
         }
@@ -55,9 +55,9 @@ public class TicketActivity extends AppCompatActivity {
 
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                   
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
                     adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    new EnviarTicket().execute(getTicket(Mesas.numMesa));
                 }
             };
 }

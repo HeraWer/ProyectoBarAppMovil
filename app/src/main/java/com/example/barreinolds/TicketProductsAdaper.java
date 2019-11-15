@@ -21,8 +21,7 @@ import java.util.ArrayList;
 public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAdaper.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
+
         public ImageView productImageTicket;
         public TextView productNameTicket;
         public TextView productQuantityTicket;
@@ -31,11 +30,8 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         public ImageButton deleteProduct;
         public Context c;
 
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
+
             super(itemView);
 
             productImageTicket = itemView.findViewById(R.id.productImageTicket);
