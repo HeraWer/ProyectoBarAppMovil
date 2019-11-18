@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static com.example.barreinolds.TicketProductsAdaper.productsAdapterArray;
@@ -18,6 +20,7 @@ public class TicketActivity extends AppCompatActivity {
     TextView ticketTitle;
     RecyclerView productosRecyclerView;
     TicketProductsAdaper adapter;
+    Button enviarPedido;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,13 @@ public class TicketActivity extends AppCompatActivity {
         // Set layout manager to position the items
         productosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        enviarPedido = findViewById(R.id.enviarPedido);
+        enviarPedido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new EnviarTicket().execute(getTicket(Mesas.numMesa));
+            }
+        });
 
     }
 
