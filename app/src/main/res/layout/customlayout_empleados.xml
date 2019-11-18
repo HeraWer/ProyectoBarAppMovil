@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="5dp">
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="150dp">
 
     <TextView
-        android:id="@+id/nombre_categoria"
+        android:id="@+id/nombre_empleados"
         android:layout_width="315dp"
         android:layout_height="80dp"
         android:layout_marginTop="30dp"
@@ -17,8 +17,8 @@
         android:paddingTop="10dp"
         android:textStyle="normal"
         android:textAlignment="center"
-        android:text="Categoria"
+        android:text="Empleados"
         android:textColor="@android:color/white"
         android:textSize="36dp" />
 
-</RelativeLayout>
+</LinearLayout>

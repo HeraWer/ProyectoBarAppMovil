@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1a1a1a"
     tools:context=".Empleados">
 
     <TextView
         android:id="@+id/nombre_empleados"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="#2F4058"
+        android:background="@color/actionBar"
         android:fontFamily="Montserrat"
         android:paddingTop="10dp"
         android:text="@string/empleados"
@@ -25,16 +24,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_empleados"
         android:layout_width="315dp"
         android:layout_height="443dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
-        android:textAlignment="center"
+        android:divider="@color/divider"
         android:dividerHeight="15dp"
-        android:divider="#1a1a1a"
         android:elevation="4dp"
+        android:textAlignment="center"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

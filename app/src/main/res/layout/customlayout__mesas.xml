@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="5dp">
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/nombre_categoria"
+        android:id="@+id/nombre_mesa"
         android:layout_width="315dp"
         android:layout_height="80dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:dividerHeight="15dp"
         android:divider="#1a1a1a"
-        android:elevation="50dp"
+        android:elevation="20dp"
         android:background="@color/actionBar"
         android:fontFamily="Montserrat"
         android:paddingTop="10dp"
         android:textStyle="normal"
         android:textAlignment="center"
-        android:text="Categoria"
+        android:text="Mesas"
         android:textColor="@android:color/white"
         android:textSize="36dp" />
 
-</RelativeLayout>
+</LinearLayout>

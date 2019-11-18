@@ -1,11 +1,15 @@
 package com.example.barreinolds;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -41,9 +45,9 @@ public class Mesas extends AppCompatActivity {
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listaMesas);
 
+        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), listaMesas);
         listView = (ListView) findViewById(R.id.lista_mesas);
-        listView.setBackgroundColor(Color.parseColor("#2F4058"));
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(customAdapter);
         Bundle bundle = getIntent().getExtras();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,6 +88,25 @@ public class Mesas extends AppCompatActivity {
             }
            // Cada vez que acaba avanza una etiqueta.
             event = xrp.next();
+        }
+    }
+
+    class CustomAdapter extends ArrayAdapter<String> {
+
+        public CustomAdapter(@NonNull Context context, ArrayList<String> resource ){
+            super(context, 0, resource);
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.customlayout__mesas, parent, false);
+
+
+            }
+            return convertView;
         }
     }
 }

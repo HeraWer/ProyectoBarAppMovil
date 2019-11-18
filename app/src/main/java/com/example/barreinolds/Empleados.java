@@ -1,25 +1,18 @@
 package com.example.barreinolds;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.graphics.Color;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Empleados extends AppCompatActivity {
 
     static String empleado;
-    ArrayList<String> listaEmpleados;
-    ListView listView;
+    static ArrayList<String> listaEmpleados;
+    EmpleadosAdapter adapter;
+    RecyclerView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +28,17 @@ public class Empleados extends AppCompatActivity {
         listaEmpleados.add("David");
 
         // Declaracion del adapter para la ListView
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, listaEmpleados);
+        /*ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, listaEmpleados);*/
 
-        listView = (ListView) findViewById(R.id.lista_empleados);
-        listView.setBackgroundColor(Color.parseColor("#2F4058"));
-        listView.setAdapter(itemsAdapter);
+        listView = findViewById(R.id.lista_empleados);
+        adapter = new EmpleadosAdapter(listaEmpleados);
+        listView.setAdapter(adapter);
+        listView.setLayoutManager(new LinearLayoutManager(this));
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+        /*listView.setOnClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //view.setBackgroundColor(Color.parseColor("#A3A921"));
@@ -50,6 +46,25 @@ public class Empleados extends AppCompatActivity {
                 empleado = listaEmpleados.get(position);
                 startActivity(intent);
             }
-        });
+        });*/
     }
+
+    /*class CustomAdapter extends ArrayAdapter<String> {
+
+        public CustomAdapter(@NonNull Context context, ArrayList<String> resource ){
+            super(context, 0, resource);
+
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.customlayout_empleados, parent, false);
+
+
+            }
+            return convertView;
+        }
+    }*/
 }

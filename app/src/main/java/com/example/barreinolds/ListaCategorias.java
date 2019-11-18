@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,7 +33,7 @@ public class ListaCategorias extends AppCompatActivity {
     Category cat;
     Product p;
     Pedido pe;
-    Button b;
+    ImageButton b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,6 @@ public class ListaCategorias extends AppCompatActivity {
         setContentView(R.layout.activity_lista_categorias);
 
         b = findViewById(R.id.verComandaButton);
-
         b.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
