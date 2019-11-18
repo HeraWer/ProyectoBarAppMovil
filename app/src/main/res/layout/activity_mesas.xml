@@ -8,14 +8,16 @@
 
     <TextView
         android:id="@+id/nombre_mesa"
-        android:layout_width="163dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="#2F4058"
+        android:fontFamily="Montserrat"
+        android:paddingTop="10dp"
         android:text="@string/mesas"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="36dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lista_mesas"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +29,10 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
+        android:dividerHeight="15dp"
+        android:divider="#1a1a1a"
+        android:elevation="4dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

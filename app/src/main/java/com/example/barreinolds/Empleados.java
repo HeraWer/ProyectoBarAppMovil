@@ -3,6 +3,7 @@ package com.example.barreinolds;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,11 +39,13 @@ public class Empleados extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, listaEmpleados);
 
         listView = (ListView) findViewById(R.id.lista_empleados);
+        listView.setBackgroundColor(Color.parseColor("#2F4058"));
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //view.setBackgroundColor(Color.parseColor("#A3A921"));
                 Intent intent = new Intent(Empleados.this, Mesas.class);
                 empleado = listaEmpleados.get(position);
                 startActivity(intent);

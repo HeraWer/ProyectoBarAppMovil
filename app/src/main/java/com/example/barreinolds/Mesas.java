@@ -3,6 +3,7 @@ package com.example.barreinolds;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,6 +42,7 @@ public class Mesas extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, listaMesas);
 
         listView = (ListView) findViewById(R.id.lista_mesas);
+        listView.setBackgroundColor(Color.parseColor("#2F4058"));
         listView.setAdapter(itemsAdapter);
         Bundle bundle = getIntent().getExtras();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
