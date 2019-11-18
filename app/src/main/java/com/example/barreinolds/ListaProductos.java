@@ -70,7 +70,9 @@ public class ListaProductos extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             final Product producto = getItem(position);
 
-
+            if (producto.getCantidad() <= 0) {
+                ticket.getProductosComanda().remove(producto);
+            }
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.customlayout_productos, parent, false);
@@ -93,7 +95,7 @@ public class ListaProductos extends AppCompatActivity {
                             if (producto.getCantidad() <= 0) {
                                 ticket.getProductosComanda().remove(producto);
                             }
-                            new EnviarTicket().execute(ticket);
+//                            new EnviarTicket().execute(ticket);
                         }
                         p = new Pedido();
                         p.crearXML(getApplicationContext(), ticket.getProductosComanda());
@@ -110,9 +112,9 @@ public class ListaProductos extends AppCompatActivity {
                         } else {
                             ticket.getProductosComanda().add(producto);
                         }
-                        if (ticket != null) {
-                            new EnviarTicket().execute(ticket);
-                        }
+//                        if (ticket != null) {
+//                            new EnviarTicket().execute(ticket);
+//                        }
                         p = new Pedido();
                         p.crearXML(getApplicationContext(), ticket.getProductosComanda());
 
@@ -136,13 +138,17 @@ public class ListaProductos extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         ticket = getTicket(numMesa);
-        for (Product ticketProduct : ticket.getProductosComanda()) {
-            for (Product catProduct : productos) {
+        boolean encontrado;
+        for (Product catProduct : productos) {
+            encontrado = false;
+            for (Product ticketProduct : ticket.getProductosComanda()) {
                 if (ticketProduct.getId() == catProduct.getId()) {
+                    encontrado = true;
                     break;
-                } else if (ticketProduct.getCantidad() >= 0) {
-                    catProduct.setCantidad(0);
                 }
+            }
+            if (catProduct.getCantidad() > 0 && encontrado == false) {
+                catProduct.setCantidad(0);
             }
         }
         if (ticket == null)
@@ -158,4 +164,8 @@ public class ListaProductos extends AppCompatActivity {
         return null;
     }
 
+    public void actializarTicket(ArrayList<Product> newPr) {
+        ticket.setProductosComanda(newPr);
+        new EnviarTicket().execute(ticket);
+    }
 }

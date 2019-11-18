@@ -4,4 +4,5 @@
     <string name="mesas">Mesas</string>
     <string name="Pedido">Pedido</string>
     <string name="empleados">Empleados</string>
+    <string name="enviar">Enviar Pedido</string>
 </resources>
