@@ -23,7 +23,7 @@ public class Empleados extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mesas);
+        setContentView(R.layout.activity_empleados);
 
         listaEmpleados = new ArrayList<String>();
 
@@ -37,7 +37,7 @@ public class Empleados extends AppCompatActivity {
         ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listaEmpleados);
 
-        listView = (ListView) findViewById(R.id.lista_mesas);
+        listView = (ListView) findViewById(R.id.lista_empleados);
         listView.setAdapter(itemsAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
