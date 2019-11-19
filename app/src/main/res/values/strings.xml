@@ -3,6 +3,6 @@
     <string name="categorias">Categorias</string>
     <string name="mesas">Mesas</string>
     <string name="Pedido">Pedido</string>
-    <string name="empleados">Empleados</string>
+    <string name="empleados">Camareros</string>
     <string name="enviar">Enviar Pedido</string>
 </resources>

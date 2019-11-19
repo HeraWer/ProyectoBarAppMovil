@@ -1,35 +1,29 @@
 package com.example.barreinolds;
 
-import java.util.ArrayList;
-
+import java.io.Serializable;
 /*
  * Esta es la clase que define a los camareros.
  */
-public class Camarero {
+public class Camarero implements Serializable {
 
     // Atributos de la clase
     private int id;
     private String nombre;
     private String username;
-    private ArrayList<Integer> mesas;
-
+    private static final long serialVersionUID = 3L;
     /*
      * Constructor vacío.
      */
-    public Camarero() {
-        mesas = new ArrayList<Integer>();
-    }
 
     /*
      * Constructor en el que se le pasa el nombre y el numero
      * de mesa y se le asigna a sus atributos.
      */
-    public Camarero(int id, String nombre, String username, ArrayList<Integer> mesas) {
+    public Camarero(int id, String nombre, String username) {
         super();
         this.id = id;
         this.nombre = nombre;
         this.username = username;
-        this.mesas = mesas;
     }
 
     /*
@@ -49,14 +43,6 @@ public class Camarero {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public ArrayList<Integer> getMesas() {
-        return mesas;
-    }
-
-    public void setMesas(ArrayList<Integer> mesas) {
-        this.mesas = mesas;
     }
 
     public String getUsername() {

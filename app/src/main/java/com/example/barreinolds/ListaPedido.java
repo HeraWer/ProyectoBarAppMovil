@@ -16,9 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import static com.example.barreinolds.Empleados.camarero;
 import static com.example.barreinolds.ListaCategorias.lp;
+import static com.example.barreinolds.Mesas.numMesa;
 
 public class ListaPedido extends AppCompatActivity {
 
@@ -32,7 +35,7 @@ public class ListaPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pedido);
         titulo = findViewById(R.id.nombre_pedido);
-        ticket = new Ticket();
+        ticket = new Ticket(numMesa, camarero, new Timestamp(System.currentTimeMillis()));
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             titulo.setText(bundle.getString("Pedido"));

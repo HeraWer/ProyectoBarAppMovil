@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class TicketActivity extends AppCompatActivity {
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
         adapter = new TicketProductsAdaper(getTicket(Mesas.numMesa).getProductosComanda());
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(productosRecyclerView);
+        ((SimpleItemAnimator) productosRecyclerView.getItemAnimator()).setRemoveDuration(800);
         productosRecyclerView.setAdapter(adapter);
         // Set layout manager to position the items
         productosRecyclerView.setLayoutManager(new LinearLayoutManager(this));

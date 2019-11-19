@@ -17,8 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import static com.example.barreinolds.Empleados.camarero;
 import static com.example.barreinolds.ListaCategorias.lp;
 import static com.example.barreinolds.Mesas.numMesa;
 
@@ -37,11 +39,10 @@ public class ListaProductos extends AppCompatActivity {
 
         ticket = getTicket(numMesa);
         if (ticket == null) {
-            ticket = new Ticket();
+            ticket = new Ticket(numMesa, camarero, new Timestamp(System.currentTimeMillis()));
+            Mesas.tickets.add(ticket);
         }
         ticket.setMesa(numMesa);
-
-        Mesas.tickets.add(ticket);
 
         titulo = findViewById(R.id.nombre_producto);
         getSupportActionBar().setTitle("Bar Reinolds");
@@ -152,8 +153,10 @@ public class ListaProductos extends AppCompatActivity {
                 catProduct.setCantidad(0);
             }
         }
-        if (ticket == null)
-            ticket = new Ticket();
+        if (ticket == null) {
+            ticket = new Ticket(numMesa, camarero, new Timestamp(System.currentTimeMillis()));
+            Mesas.tickets.add(ticket);
+        }
     }
 
     public Ticket getTicket(int numMesa) {
