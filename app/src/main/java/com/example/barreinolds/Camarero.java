@@ -1,17 +1,19 @@
 package com.example.barreinolds;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
  * Esta es la clase que define a los camareros.
  */
-public class Camarero {
+public class Camarero implements Serializable {
 
     // Atributos de la clase
     private int id;
     private String nombre;
     private String username;
     private ArrayList<Integer> mesas;
+    private static final long serialVersionUID = 3L;
 
     /*
      * Constructor vacío.

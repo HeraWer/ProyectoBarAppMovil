@@ -12,12 +12,15 @@ import android.widget.ListView;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Empleados extends AppCompatActivity {
 
     static String empleado;
-    ArrayList<String> listaEmpleados;
+    static ArrayList<String> listaEmpleados;
+    static ArrayList<Camarero> llistaEmpleats;
+    static int totalMesas;
     ListView listView;
 
     @Override
@@ -25,7 +28,11 @@ public class Empleados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesas);
 
-        listaEmpleados = new ArrayList<String>();
+        EnviarMessage em = new EnviarMessage(new Message("CAMARERO"));
+        em.execute();
+        em = new EnviarMessage(new Message("NUMMESAS"));
+        em.execute();
+        //listaEmpleados = new ArrayList<Camarero>();
 
         listaEmpleados.add("David");
         listaEmpleados.add("David");
