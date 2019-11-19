@@ -1,10 +1,10 @@
 package com.example.barreinolds;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+
 import java.util.ArrayList;
 
 public class Empleados extends AppCompatActivity {
@@ -67,4 +67,6 @@ public class Empleados extends AppCompatActivity {
             return convertView;
         }
     }*/
+
+
 }

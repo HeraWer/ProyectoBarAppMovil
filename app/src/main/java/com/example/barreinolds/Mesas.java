@@ -2,6 +2,8 @@ package com.example.barreinolds;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +23,10 @@ import java.util.ArrayList;
 public class Mesas extends AppCompatActivity {
 
     static int numMesa;
-    ArrayList<String> listaMesas;
+    static ArrayList<String> listaMesas;
     public static ArrayList<Ticket> tickets;
-    ListView listView;
+    RecyclerView listView;
+    MesasAdapter adapter;
     private String etiqueta = null;
 
     @Override
@@ -41,22 +44,11 @@ public class Mesas extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Declaracion del adapter para la ListView
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, listaMesas);
 
-        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), listaMesas);
-        listView = (ListView) findViewById(R.id.lista_mesas);
-        listView.setAdapter(customAdapter);
-        Bundle bundle = getIntent().getExtras();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ListaCategorias.class);
-                numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
-                startActivity(intent);
-            }
-        });
+        listView = findViewById(R.id.lista_mesas);
+        adapter = new MesasAdapter(listaMesas);
+        listView.setAdapter(adapter);
+        listView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
@@ -88,25 +80,6 @@ public class Mesas extends AppCompatActivity {
             }
            // Cada vez que acaba avanza una etiqueta.
             event = xrp.next();
-        }
-    }
-
-    class CustomAdapter extends ArrayAdapter<String> {
-
-        public CustomAdapter(@NonNull Context context, ArrayList<String> resource ){
-            super(context, 0, resource);
-
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.customlayout__mesas, parent, false);
-
-
-            }
-            return convertView;
         }
     }
 }
