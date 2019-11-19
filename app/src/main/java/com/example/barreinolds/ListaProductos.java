@@ -45,7 +45,6 @@ public class ListaProductos extends AppCompatActivity {
         ticket.setMesa(numMesa);
 
         titulo = findViewById(R.id.nombre_producto);
-        getSupportActionBar().setTitle("Bar Reinolds");
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {

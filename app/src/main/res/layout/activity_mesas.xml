@@ -8,25 +8,32 @@
 
     <TextView
         android:id="@+id/nombre_mesa"
-        android:layout_width="163dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="@color/actionBar"
+        android:fontFamily="Montserrat"
+        android:paddingTop="10dp"
         android:text="@string/mesas"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lista_mesas"
+        android:textSize="36dp"
+        android:textStyle="normal"
+        android:textColor="@android:color/white"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_mesas"
         android:layout_width="315dp"
         android:layout_height="443dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
+        android:dividerHeight="15dp"
+        android:divider="@color/divider"
+        android:elevation="50dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

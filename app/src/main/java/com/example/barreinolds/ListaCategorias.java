@@ -2,9 +2,12 @@ package com.example.barreinolds;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,26 +28,26 @@ import java.util.ArrayList;
 
 public class ListaCategorias extends AppCompatActivity {
 
-    ListView listView;
-    ArrayList<Category> categorias;
+    RecyclerView listView;
+    static ArrayList<Category> categorias;
     ArrayList<Product> productos;
     static ArrayList<Product> lp;
+    ListaCategoriasAdapter adapter;
     Category cat;
     Product p;
     Pedido pe;
-    Button b;
+    ImageButton b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_categorias);
-        getSupportActionBar().setTitle("Bar Reinolds");
 
         b = findViewById(R.id.verComandaButton);
-
         b.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
                 if(lookForTicketTable(Mesas.numMesa)) {
                     Intent i = new Intent(ListaCategorias.this, TicketActivity.class);
                     startActivity(i);
@@ -61,7 +65,12 @@ public class ListaCategorias extends AppCompatActivity {
         pe = new Pedido();
         pe.crearXML(getApplicationContext(), productos);
 
-        CustomAdapter customAdapter = new CustomAdapter(this, categorias);
+        listView = findViewById(R.id.lista_categorias);
+        adapter = new ListaCategoriasAdapter((categorias));
+        listView.setAdapter(adapter);
+        listView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+
+        /*CustomAdapter customAdapter = new CustomAdapter(this, categorias);
         listView = (ListView) findViewById(R.id.lista_categorias);
         listView.setAdapter(customAdapter);
 
@@ -73,7 +82,7 @@ public class ListaCategorias extends AppCompatActivity {
                 intent.putExtra("Categoria", categorias.get(position).getnCategory());
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     public boolean lookForTicketTable(int numMesa){
@@ -127,7 +136,7 @@ public class ListaCategorias extends AppCompatActivity {
         }
     }
 
-    class CustomAdapter extends ArrayAdapter<Category> {
+    /*class CustomAdapter extends ArrayAdapter<Category> {
 
         public CustomAdapter(@NonNull Context context, ArrayList<Category> resource) {
             super(context, 0, resource);
@@ -146,5 +155,5 @@ public class ListaCategorias extends AppCompatActivity {
             }
             return convertView;
         }
-    }
+    }*/
 }

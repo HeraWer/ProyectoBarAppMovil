@@ -8,40 +8,48 @@
 
     <TextView
         android:id="@+id/nombre_categoria"
-        android:layout_width="163dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="#2F4058"
+        android:paddingTop="10dp"
         android:text="@string/categorias"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lista_categorias"
+        android:textColor="@android:color/white"
+        android:textSize="36dp"
+        android:textStyle="normal"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_categorias"
         android:layout_width="315dp"
         android:layout_height="443dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:textAlignment="center"
+        android:divider="@color/divider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre_categoria" />
 
-    <Button
+    <ImageButton
         android:id="@+id/verComandaButton"
-        android:layout_width="95dp"
-        android:layout_height="69dp"
-        android:text="Ver comanda"
-        app:layout_constraintBottom_toTopOf="@+id/lista_categorias"
+        android:layout_width="46dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginEnd="10dp"
+        android:background="#2F4058"
+        android:src="@drawable/invoice_22150"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
+        app:layout_constraintVertical_bias="0.023" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

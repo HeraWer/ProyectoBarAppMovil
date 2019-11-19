@@ -1,31 +1,21 @@
 package com.example.barreinolds;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.AsyncTask;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
 public class Empleados extends AppCompatActivity {
 
-    static String empleado;
     static ArrayList<Camarero> listaEmpleados;
     static int totalMesas;
-    ListView listView;
+
+    EmpleadosAdapter adapter;
+    RecyclerView listView;
     static Camarero camarero;
 
     @Override
@@ -82,20 +72,16 @@ public class Empleados extends AppCompatActivity {
         }
 
         // Declaracion del adapter para la ListView
-        ArrayAdapter<Camarero> itemsAdapter = new ArrayAdapter<Camarero>(this,
-                android.R.layout.simple_list_item_1, listaEmpleados);
 
-        listView = (ListView) findViewById(R.id.lista_empleados);
-        listView.setAdapter(itemsAdapter);
+        /*ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, listaEmpleados);*/
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                camarero = listaEmpleados.get(position);
-                Intent intent = new Intent(Empleados.this, Mesas.class);
-                empleado = listaEmpleados.get(position).getNombre();
-                startActivity(intent);
-            }
-        });
+        listView = findViewById(R.id.lista_empleados);
+        adapter = new EmpleadosAdapter(listaEmpleados);
+        listView.setAdapter(adapter);
+        listView.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
+
 }

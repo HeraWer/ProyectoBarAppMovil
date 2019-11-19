@@ -1,10 +1,17 @@
 package com.example.barreinolds;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -22,7 +29,8 @@ public class Mesas extends AppCompatActivity {
     static int numMesa;
     static ArrayList<String> listaMesas;
     public static ArrayList<Ticket> tickets;
-    ListView listView;
+    RecyclerView listView;
+    MesasAdapter adapter;
     private String etiqueta = null;
 
     @Override
@@ -43,20 +51,12 @@ public class Mesas extends AppCompatActivity {
             listaMesas.add("Mesa " + i);
         }
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, listaMesas);
 
-        listView = (ListView) findViewById(R.id.lista_mesas);
-        listView.setAdapter(itemsAdapter);
-        Bundle bundle = getIntent().getExtras();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ListaCategorias.class);
-                numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
-                startActivity(intent);
-            }
-        });
+
+        listView = findViewById(R.id.lista_mesas);
+        adapter = new MesasAdapter(listaMesas);
+        listView.setAdapter(adapter);
+        listView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
 
