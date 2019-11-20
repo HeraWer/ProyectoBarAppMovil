@@ -3,6 +3,8 @@ package com.example.barreinolds;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -27,8 +29,10 @@ import static com.example.barreinolds.Mesas.numMesa;
 public class ListaProductos extends AppCompatActivity {
 
     ListView listView;
+    RecyclerView listaProductosRecyclerView;
     TextView titulo;
     ArrayList<Product> productos;
+    ListaProductosAdapter listaProductosAdapter;
     public Ticket ticket;
     Pedido p;
 
@@ -50,10 +54,11 @@ public class ListaProductos extends AppCompatActivity {
         if (bundle != null) {
             titulo.setText(bundle.getString("Categoria"));
             productos = lp;
+            listaProductosRecyclerView = findViewById(R.id.lista_producto);
 
-            CustomAdapter customAdapter = new CustomAdapter(this, productos);
-            listView = (ListView) findViewById(R.id.lista_producto);
-            listView.setAdapter(customAdapter);
+            listaProductosAdapter= new ListaProductosAdapter(ListaCategorias.lp);
+            listaProductosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            listaProductosRecyclerView.setAdapter(listaProductosAdapter);
         } else {
             Toast.makeText(ListaProductos.this, "Lista vacia", Toast.LENGTH_LONG).show();
         }

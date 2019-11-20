@@ -104,7 +104,6 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
 
     @Override
     public int getItemCount() {
-
         return productsAdapterArray.size();
     }
 
