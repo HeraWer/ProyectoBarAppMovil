@@ -23,23 +23,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ProductRecyclerView"
-        android:layout_width="400dp"
-        android:layout_height="540dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="382dp"
+        android:layout_height="483dp"
+        android:layout_marginTop="80dp"
         android:background="#01000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:maxHeight="483dp"
+        app:layout_constraintBottom_toTopOf="@+id/enviarPedido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TicketTitle"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintTop_toBottomOf="@+id/TicketTitle" />
 
     <Button
         android:id="@+id/enviarPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="#01000000"
+        android:background="#502F4058"
         android:drawableRight="@drawable/android_send_icon_icons_com_50500"
         android:elevation="20dp"
         android:fontFamily="casual"
@@ -47,7 +47,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProductRecyclerView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
