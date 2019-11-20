@@ -13,31 +13,31 @@
         android:id="@+id/imagen_producto"
         android:layout_width="40dp"
         android:layout_height="70dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="4dp"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/nombre_producto"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
+        android:layout_width="112dp"
+        android:layout_height="50dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Producto"
-        android:textSize="14sp"
         android:textColor="@android:color/white"
+        android:textSize="14sp"
 
         />
 
     <TextView
         android:id="@+id/precio_producto"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="29dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:text="Precio"
-        android:textStyle="bold"
         android:textColor="@android:color/white"
+        android:textStyle="bold"
 
 
         />

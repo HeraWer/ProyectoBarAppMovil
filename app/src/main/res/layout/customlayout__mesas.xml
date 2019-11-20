@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="15dp">
 
     <TextView
         android:id="@+id/nombre_mesa"
-        android:layout_width="315dp"
+        android:layout_width="144dp"
         android:layout_height="80dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="16dp"
-        android:dividerHeight="15dp"
-        android:divider="#1a1a1a"
-        android:elevation="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@color/actionBar"
+        android:divider="#1a1a1a"
+        android:dividerHeight="15dp"
+        android:elevation="20dp"
         android:fontFamily="Montserrat"
-        android:paddingTop="10dp"
-        android:textStyle="normal"
-        android:textAlignment="center"
+        android:paddingTop="15dp"
+        android:paddingRight="50dp"
         android:text="Mesas"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="36dp" />
+        android:textSize="30dp"
+        android:textStyle="normal" />
 
 </LinearLayout>

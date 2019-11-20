@@ -2,6 +2,7 @@ package com.example.barreinolds;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +30,7 @@ public class Mesas extends AppCompatActivity {
     static int numMesa;
     static ArrayList<String> listaMesas;
     public static ArrayList<Ticket> tickets;
+    ArrayList<String> listNumMesa;
     RecyclerView listView;
     MesasAdapter adapter;
     private String etiqueta = null;
@@ -42,6 +44,7 @@ public class Mesas extends AppCompatActivity {
         // Declaracion del adapter para la ListView
 
         listaMesas = new ArrayList<String>();
+        listNumMesa = new ArrayList<String>();
 
         if (totalMesas == 0) {
             totalMesas = 5;
@@ -49,14 +52,17 @@ public class Mesas extends AppCompatActivity {
 
         for (int i = 1; i <= totalMesas; i++) {
             listaMesas.add("Mesa " + i);
+            listNumMesa.add(String.valueOf(i));
         }
 
 
 
+
         listView = findViewById(R.id.lista_mesas);
-        adapter = new MesasAdapter(listaMesas);
+        adapter = new MesasAdapter(listNumMesa);
         listView.setAdapter(adapter);
         listView.setLayoutManager(new LinearLayoutManager(this));
+        listView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
     }
 }
 
