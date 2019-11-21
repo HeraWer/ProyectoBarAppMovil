@@ -23,7 +23,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import static com.example.barreinolds.Empleados.camarero;
-import static com.example.barreinolds.ListaCategorias.lp;
 import static com.example.barreinolds.Mesas.numMesa;
 
 public class ListaProductos extends AppCompatActivity {
@@ -31,7 +30,7 @@ public class ListaProductos extends AppCompatActivity {
     ListView listView;
     RecyclerView listaProductosRecyclerView;
     TextView titulo;
-    ArrayList<Product> productos;
+    public static ArrayList<Product> productos;
     ListaProductosAdapter listaProductosAdapter;
     public Ticket ticket;
     Pedido p;
@@ -53,10 +52,10 @@ public class ListaProductos extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             titulo.setText(bundle.getString("Categoria"));
-            productos = lp;
+//            productos = lp;
             listaProductosRecyclerView = findViewById(R.id.lista_producto);
 
-            listaProductosAdapter= new ListaProductosAdapter(ListaCategorias.lp);
+            listaProductosAdapter= new ListaProductosAdapter(productos);
             listaProductosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             listaProductosRecyclerView.setAdapter(listaProductosAdapter);
         } else {

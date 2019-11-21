@@ -54,7 +54,7 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListaCategorias.lp = category.getListProducts();
+                ListaProductos.productos = category.getListProducts();
                 Intent intent = new Intent(v.getContext(), ListaProductos.class);
                 intent.putExtra("Categoria", category.getnCategory());
                 v.getContext().startActivity(intent);

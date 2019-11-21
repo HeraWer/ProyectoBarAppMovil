@@ -69,7 +69,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
 
         ImageView itemImageView = holder.lProductosImageView;
 
-        String uri = product.getImage();
+        String uri = product.getImage_movil();
         int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
         Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
 
@@ -99,7 +99,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
             public void onClick(View v) {
                 Product p = Search.compareProducts(pLPForOnClick, tForOnClick.getProductosComanda());
                 if(p == null)
-                    p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, pLPForOnClick.getImage());
+                    p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, null, pLPForOnClick.getImage_movil());
                 p.setCantidad(p.getCantidad() + 1);
                 itemQuantity.setText(String.valueOf(p.getCantidad()));
                 if (p.getCantidad() == 1) {

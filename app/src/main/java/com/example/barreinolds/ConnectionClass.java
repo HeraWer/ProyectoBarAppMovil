@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ConnectionClass {
 
-    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 40, (byte) 47};
+    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 40, (byte) 202};
     public static final int PORT = 1234;
     public InetAddress serverIP = InetAddress.getByAddress(addr);
     private Socket socket = new Socket(serverIP, PORT);
@@ -28,6 +28,9 @@ public class ConnectionClass {
             outputServer.writeObject(message);
             return inputClient.readObject();
         }else if(message.getRequest().equals("NUMMESAS")){
+            outputServer.writeObject(message);
+            return inputClient.readObject();
+        }else if(message.getRequest().equals("CATEGORIAS")){
             outputServer.writeObject(message);
             return inputClient.readObject();
         }
