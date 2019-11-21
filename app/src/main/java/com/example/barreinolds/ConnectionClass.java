@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ConnectionClass {
 
-    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 40, (byte) 47};
+    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 40, (byte) 202};
     public static final int PORT = 1234;
     public InetAddress serverIP = InetAddress.getByAddress(addr);
     private Socket socket = new Socket(serverIP, PORT);

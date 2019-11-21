@@ -39,7 +39,9 @@ public class Mesas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesas);
-        tickets = new ArrayList<Ticket>();
+        if(tickets == null){
+            tickets = new ArrayList<Ticket>();
+        }
 
         // Declaracion del adapter para la ListView
 

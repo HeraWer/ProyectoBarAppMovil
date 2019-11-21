@@ -65,82 +65,6 @@ public class ListaProductos extends AppCompatActivity {
 
     }
 
-    class CustomAdapter extends ArrayAdapter<Product> {
-
-
-        public CustomAdapter(@NonNull Context context, ArrayList<Product> resource) {
-            super(context, 0, resource);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            final Product producto = getItem(position);
-
-            if (producto.getCantidad() <= 0) {
-                ticket.getProductosComanda().remove(producto);
-            }
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.customlayout_productos, parent, false);
-
-                ImageView imgProducto = (ImageView) convertView.findViewById(R.id.imagen_producto);
-                TextView nombreProducto = convertView.findViewById(R.id.nombre_producto);
-                TextView precioProducto = convertView.findViewById(R.id.precio_producto);
-                Button restarProducto = convertView.findViewById(R.id.boton_resta);
-                Button sumarProducto = convertView.findViewById(R.id.boton_suma);
-                final TextView cantidadProducto = convertView.findViewById(R.id.cantidad_producto);
-                //           if(producto != null)
-                cantidadProducto.setText(String.valueOf(producto.getCantidad()));
-
-                restarProducto.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (producto.getCantidad() > 0) {
-                            producto.setCantidad(producto.getCantidad() - 1);
-                            cantidadProducto.setText(String.valueOf(producto.getCantidad()));
-                            if (producto.getCantidad() <= 0) {
-                                ticket.getProductosComanda().remove(producto);
-                            }
-//                            new EnviarTicket().execute(ticket);
-                        }
-                        p = new Pedido();
-                        p.crearXML(getApplicationContext(), ticket.getProductosComanda());
-                    }
-                });
-
-                sumarProducto.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        producto.setCantidad(producto.getCantidad() + 1);
-                        cantidadProducto.setText(String.valueOf(producto.getCantidad()));
-                        if (ticket.getProductosComanda().contains(producto)) {
-                            ticket.getProductosComanda().set(ticket.getProductosComanda().indexOf(producto), producto);
-                        } else {
-                            ticket.getProductosComanda().add(producto);
-                        }
-//                        if (ticket != null) {
-//                            new EnviarTicket().execute(ticket);
-//                        }
-                        p = new Pedido();
-                        p.crearXML(getApplicationContext(), ticket.getProductosComanda());
-
-                    }
-                });
-
-                String uri = producto.getImage();
-                int imageResource = getResources().getIdentifier(uri, "drawable", getPackageName());
-                Drawable imagenDra = ContextCompat.getDrawable(getContext(), imageResource);
-
-                imgProducto.setImageDrawable(imagenDra);
-                nombreProducto.setText(producto.getName());
-                precioProducto.setText(producto.getPrice() + "€");
-            }
-            return convertView;
-        }
-
-
-    }
-
     protected void onResume() {
         super.onResume();
         ticket = getTicket(numMesa);
@@ -172,8 +96,4 @@ public class ListaProductos extends AppCompatActivity {
         return null;
     }
 
-    public void actializarTicket(ArrayList<Product> newPr) {
-        ticket.setProductosComanda(newPr);
-        new EnviarTicket().execute(ticket);
-    }
 }

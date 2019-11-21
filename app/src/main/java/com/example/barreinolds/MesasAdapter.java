@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 import static com.example.barreinolds.Mesas.listaMesas;
 import static com.example.barreinolds.Mesas.numMesa;
+import static com.example.barreinolds.Mesas.tickets;
 
 public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> {
 
@@ -61,6 +65,7 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListaCategorias.class);
                 numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
+                recuperarTicket(numMesa);
                 v.getContext().startActivity(intent);
             }
         });
@@ -68,6 +73,40 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
+
         return mesasArrayList.size();
+    }
+
+    public void recuperarTicket(final int numMesa){
+        final String recuperarComanda = "RECUPERARTICKET " + numMesa;
+        final CountDownLatch latch = new CountDownLatch(1);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ConnectionClass connection = null;
+                try {
+                    connection = new ConnectionClass();
+                    Object o;
+                    o = connection.sendMessage(new Message(recuperarComanda));
+                    Ticket t = (Ticket) o;
+                    if(t == null){
+                        t = new Ticket(numMesa);
+                    }
+                    Search.deleteTicket(t.getMesa());
+                    tickets.add(t);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                latch.countDown();
+            }
+        }).start();
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

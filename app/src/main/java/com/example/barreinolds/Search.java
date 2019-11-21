@@ -12,6 +12,15 @@ public class Search {
         return null;
     }
 
+    public static void deleteTicket(int numMesa){
+        for(Ticket t : Mesas.tickets){
+            if(t.getMesa() == numMesa) {
+                Mesas.tickets.remove(t);
+                return;
+            }
+        }
+    }
+
     public static Product compareProducts(Product p, ArrayList<Product> products){
         if(p == null)
             return null;

@@ -70,19 +70,6 @@ public class ListaCategorias extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
 
-        /*CustomAdapter customAdapter = new CustomAdapter(this, categorias);
-        listView = (ListView) findViewById(R.id.lista_categorias);
-        listView.setAdapter(customAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                lp = categorias.get(position).getListProducts();
-                Intent intent = new Intent(ListaCategorias.this, ListaProductos.class);
-                intent.putExtra("Categoria", categorias.get(position).getnCategory());
-                startActivity(intent);
-            }
-        });*/
     }
 
     public boolean lookForTicketTable(int numMesa){
@@ -135,25 +122,4 @@ public class ListaCategorias extends AppCompatActivity {
             event = xrp.next();
         }
     }
-
-    /*class CustomAdapter extends ArrayAdapter<Category> {
-
-        public CustomAdapter(@NonNull Context context, ArrayList<Category> resource) {
-            super(context, 0, resource);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            Category category = getItem(position);
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.customlayout_categorias, parent, false);
-
-                TextView nombreCategoria = convertView.findViewById(R.id.nombre_categoria);
-
-                nombreCategoria.setText(category.getnCategory());
-            }
-            return convertView;
-        }
-    }*/
 }
