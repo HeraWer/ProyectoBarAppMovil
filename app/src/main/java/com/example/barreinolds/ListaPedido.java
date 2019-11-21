@@ -20,7 +20,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import static com.example.barreinolds.Empleados.camarero;
-import static com.example.barreinolds.ListaCategorias.lp;
 import static com.example.barreinolds.Mesas.numMesa;
 
 public class ListaPedido extends AppCompatActivity {

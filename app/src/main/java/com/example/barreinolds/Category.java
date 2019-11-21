@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 public class Category implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String id;
     private String nCategory;
     private ArrayList<Product> listProducts;
 
     public Category(){
-
+        ArrayList<Product> listProducts = new ArrayList<Product>();
     }
 
     public Category(String id, String nCategory) {

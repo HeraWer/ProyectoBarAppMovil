@@ -10,16 +10,18 @@ public class Product implements Serializable {
     private String description;
     private String price;
     private int cantidad;
-    private String image;
+    private String image_desktop;
+    private String image_movil;
     private static final long serialVersionUID = 2L;
 
-    public Product(int id, String name, String description, String price, int cantidad, String image) {
+    public Product(int id, String name, String description, String price, int cantidad, String image_desktop, String image_movil) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.cantidad = cantidad;
-        this.image = image;
+        this.image_desktop = image_desktop;
+        this.image_movil = image_movil;
     }
 
     public Product() {
@@ -66,11 +68,19 @@ public class Product implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public String getImage() {
-        return image;
+    public String getImage_movil() {
+        return image_movil;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImage_movil(String image) {
+        this.image_movil = image_movil;
+    }
+
+    public String getImage_desktop() {
+        return image_desktop;
+    }
+
+    public void setImage_desktop(String image_desktop) {
+        this.image_desktop = image_desktop;
     }
 }

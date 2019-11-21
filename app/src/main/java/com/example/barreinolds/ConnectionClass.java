@@ -30,6 +30,9 @@ public class ConnectionClass {
         }else if(message.getRequest().equals("NUMMESAS")){
             outputServer.writeObject(message);
             return inputClient.readObject();
+        }else if(message.getRequest().equals("CATEGORIAS")){
+            outputServer.writeObject(message);
+            return inputClient.readObject();
         }
         return null;
     }
