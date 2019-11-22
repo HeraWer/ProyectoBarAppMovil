@@ -31,12 +31,7 @@ public class ListaCategorias extends AppCompatActivity {
 
     RecyclerView listView;
     static ArrayList<Category> categorias;
-//    ArrayList<Product> productos;
-//    static ArrayList<Product> lp;
     ListaCategoriasAdapter adapter;
-//    Category cat;
-//    Product p;
-//    Pedido pe;
     ImageButton b;
 
     @Override
@@ -140,70 +135,6 @@ public class ListaCategorias extends AppCompatActivity {
                     break;
             }
             event = xrp.next();
-        }
-    }*/
-
-//    public void leerCatXML() throws IOException, XmlPullParserException {
-//        XmlPullParser xrp = getResources().getXml(R.xml.productes);
-//        xrp.next();
-//        int i = 0;
-//        int event = xrp.getEventType();
-//        while (event != XmlPullParser.END_DOCUMENT) {
-//            String etiqueta = null;
-//            switch (event) {
-//                case XmlPullParser.START_DOCUMENT:
-//                    categorias = new ArrayList<Category>();
-//                    break;
-//                case XmlPullParser.START_TAG:
-//                    etiqueta = xrp.getName();
-//                    if (etiqueta.equals("categoria")) {
-//                        productos = new ArrayList<Product>();
-//                        cat = new Category();
-//                        cat.setId(xrp.getAttributeValue(null, "id"));
-//                    } else if (etiqueta != null) {
-//                        if (etiqueta.equals("nombre")) {
-//                            cat.setnCategory(xrp.nextText());
-//                            categorias.add(cat);
-//                        } else if (etiqueta.equals("producto")) {
-//                            p = new Product();
-//                            p.setId(Integer.parseInt(xrp.getAttributeValue(null, "id")));
-//                            xrp.next();
-//                            p.setName(xrp.nextText());
-//                            xrp.next();
-//                            p.setPrice(xrp.nextText().replace(",", "."));
-//                            xrp.next();
-//                            p.setDescription(xrp.nextText());
-//                            xrp.next();
-//                            p.setImage(xrp.nextText());
-//                            productos.add(p);
-//                            cat.setListProducts(productos);
-//                        }
-//
-//                    }
-//                    break;
-//            }
-//            event = xrp.next();
-//        }
-//    }
-
-    /*class CustomAdapter extends ArrayAdapter<Category> {
-
-        public CustomAdapter(@NonNull Context context, ArrayList<Category> resource) {
-            super(context, 0, resource);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            Category category = getItem(position);
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.customlayout_categorias, parent, false);
-
-                TextView nombreCategoria = convertView.findViewById(R.id.nombre_categoria);
-
-                nombreCategoria.setText(category.getnCategory());
-            }
-            return convertView;
         }
     }*/
 

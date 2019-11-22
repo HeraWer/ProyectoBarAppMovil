@@ -65,7 +65,7 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListaCategorias.class);
                 numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
-                recuperarTicket(numMesa);
+//                recuperarTicket(numMesa);
                 v.getContext().startActivity(intent);
             }
         });

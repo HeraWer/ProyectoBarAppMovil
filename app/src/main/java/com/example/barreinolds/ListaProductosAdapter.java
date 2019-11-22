@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAdapter.ViewHolder> {
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView lProductosImageView;
         public TextView lProductosName;
         public TextView lProductosPrice;
@@ -42,7 +42,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
     static ArrayList<Product> lProductsAdapterArray;
     Pedido p;
 
-    public ListaProductosAdapter(ArrayList<Product> lProductsAdapterArray){
+    public ListaProductosAdapter(ArrayList<Product> lProductsAdapterArray) {
         this.lProductsAdapterArray = lProductsAdapterArray;
     }
 
@@ -79,7 +79,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         itemName.setText(product.getName());
 
         TextView itemPrice = holder.lProductosPrice;
-        itemPrice.setText(product.getPrice());
+        itemPrice.setText(product.getPrice() + "€");
 
         final TextView itemQuantity = holder.lProductosQuantity;
 
@@ -87,9 +87,9 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         final Ticket tForOnClick = t;
         Product pTicket = Search.compareProducts(product, t.getProductosComanda());
         final Product pTicketForOnClick = pTicket;
-        if(pTicket != null){
+        if (pTicket != null) {
             itemQuantity.setText(String.valueOf(pTicket.getCantidad()));
-        }else{
+        } else {
             itemQuantity.setText("0");
         }
 
@@ -98,7 +98,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
             @Override
             public void onClick(View v) {
                 Product p = Search.compareProducts(pLPForOnClick, tForOnClick.getProductosComanda());
-                if(p == null)
+                if (p == null)
                     p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, null, pLPForOnClick.getImage_movil());
                 p.setCantidad(p.getCantidad() + 1);
                 itemQuantity.setText(String.valueOf(p.getCantidad()));
@@ -109,7 +109,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
 //                        if (ticket != null) {
 //                            new EnviarTicket().execute(ticket);
 //                        }
-               // p = new Pedido();
+                // p = new Pedido();
                 //p.crearXML(getApplicationContext(), ticket.getProductosComanda());
 
             }
@@ -132,17 +132,12 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         });
 
 
-
     }
 
     @Override
     public int getItemCount() {
         return lProductsAdapterArray.size();
     }
-
-
-
-
 
 
 }

@@ -70,7 +70,7 @@ public class ListaPedido extends AppCompatActivity {
                 TextView nombreProducto = convertView.findViewById(R.id.nombre_producto);
                 TextView precioProducto = convertView.findViewById(R.id.precio_producto);
 
-                String uri = producto.getImage();
+                String uri = producto.getImage_movil();
                 int imageResource = getResources().getIdentifier(uri, "drawable", getPackageName());
                 Drawable imagenDra = ContextCompat.getDrawable(getContext(), imageResource);
 
