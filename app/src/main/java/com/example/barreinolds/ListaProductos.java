@@ -1,20 +1,10 @@
 package com.example.barreinolds;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,13 +17,11 @@ import static com.example.barreinolds.Mesas.numMesa;
 
 public class ListaProductos extends AppCompatActivity {
 
-    ListView listView;
     RecyclerView listaProductosRecyclerView;
     TextView titulo;
     public static ArrayList<Product> productos;
     ListaProductosAdapter listaProductosAdapter;
     public Ticket ticket;
-    Pedido p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +40,6 @@ public class ListaProductos extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             titulo.setText(bundle.getString("Categoria"));
-//            productos = lp;
             listaProductosRecyclerView = findViewById(R.id.lista_producto);
 
             listaProductosAdapter= new ListaProductosAdapter(productos);
