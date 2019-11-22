@@ -31,7 +31,7 @@ public class TicketActivity extends AppCompatActivity {
         ticketTitle.setText("Pedido mesa " + Mesas.numMesa);
 
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
-        adapter = new TicketProductsAdaper(getTicket(Mesas.numMesa).getProductosComanda());
+        adapter = new TicketProductsAdaper(Search.getTicket(Mesas.numMesa).getProductosComanda());
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(productosRecyclerView);
         ((SimpleItemAnimator) productosRecyclerView.getItemAnimator()).setRemoveDuration(800);
         productosRecyclerView.setAdapter(adapter);
@@ -42,19 +42,10 @@ public class TicketActivity extends AppCompatActivity {
         enviarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new EnviarTicket().execute(getTicket(Mesas.numMesa));
+                new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
             }
         });
 
-    }
-
-    public Ticket getTicket(int numMesa) {
-        for (Ticket t : Mesas.tickets) {
-            if (t.getMesa() == numMesa) {
-                return t;
-            }
-        }
-        return null;
     }
 
 
@@ -69,7 +60,7 @@ public class TicketActivity extends AppCompatActivity {
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
                     adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                    new EnviarTicket().execute(getTicket(Mesas.numMesa));
+                    new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
                 }
             };
 }

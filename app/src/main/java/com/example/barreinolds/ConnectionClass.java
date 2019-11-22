@@ -33,7 +33,7 @@ public class ConnectionClass {
         }else if(message.getRequest().equals("CATEGORIAS")){
             outputServer.writeObject(message);
             return inputClient.readObject();
-        }else if(message.getRequest().equals("RECUPERARTICKET " + Mesas.numMesa)){
+        }else if(message.getRequest().equals("RECUPERARTICKET")){
             outputServer.writeObject(message);
             return inputClient.readObject();
         }

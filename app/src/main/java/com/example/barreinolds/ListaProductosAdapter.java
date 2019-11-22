@@ -99,7 +99,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
             public void onClick(View v) {
                 Product p = Search.compareProducts(pLPForOnClick, tForOnClick.getProductosComanda());
                 if (p == null)
-                    p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, null, pLPForOnClick.getImage_movil());
+                    p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, pLPForOnClick.getImage_desktop(), pLPForOnClick.getImage_movil());
                 p.setCantidad(p.getCantidad() + 1);
                 itemQuantity.setText(String.valueOf(p.getCantidad()));
                 if (p.getCantidad() == 1) {

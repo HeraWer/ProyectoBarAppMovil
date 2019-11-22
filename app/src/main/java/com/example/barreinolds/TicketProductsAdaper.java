@@ -95,7 +95,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
             public void onClick(View v) {
                 productsAdapterArray.remove(holderForOnClick.getAdapterPosition());
                 TicketProductsAdaper.this.notifyItemRemoved(holderForOnClick.getAdapterPosition());
-                new EnviarTicket().execute(getTicket(Mesas.numMesa));
+                new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
             }
         });
 
@@ -105,14 +105,5 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
     @Override
     public int getItemCount() {
         return productsAdapterArray.size();
-    }
-
-    public Ticket getTicket(int numMesa) {
-        for (Ticket t : Mesas.tickets) {
-            if (t.getMesa() == numMesa) {
-                return t;
-            }
-        }
-        return null;
     }
 }
