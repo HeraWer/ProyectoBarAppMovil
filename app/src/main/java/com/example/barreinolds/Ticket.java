@@ -24,6 +24,8 @@ public class Ticket implements Serializable {
     public Ticket(int mesa) {
         productosComanda = new ArrayList<Product>();
         this.mesa = mesa;
+        this.camarero = Empleados.camarero;
+        this.datetime = new Timestamp(System.currentTimeMillis());
     }
 
     public Ticket(ArrayList<Product> productosComanda, int mesa, Camarero camarero, Timestamp datetime) {

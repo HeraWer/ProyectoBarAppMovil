@@ -33,6 +33,9 @@ public class ConnectionClass {
         }else if(message.getRequest().equals("CATEGORIAS")){
             outputServer.writeObject(message);
             return inputClient.readObject();
+        }else if(message.getRequest().equals("RECUPERARTICKET " + Mesas.numMesa)){
+            outputServer.writeObject(message);
+            return inputClient.readObject();
         }
         return null;
     }

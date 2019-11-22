@@ -71,7 +71,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
 
         // Set item views based on your views and data model
         ImageView imageImageView = holder.productImageTicket;
-        String uri = product.getImage();
+        String uri = product.getImage_movil();
         int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
         Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String id;
+    private int id;
     private String nCategory;
     private ArrayList<Product> listProducts;
 
@@ -14,16 +14,16 @@ public class Category implements Serializable {
         ArrayList<Product> listProducts = new ArrayList<Product>();
     }
 
-    public Category(String id, String nCategory) {
+    public Category(int id, String nCategory) {
         this.id = id;
         this.nCategory = nCategory;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

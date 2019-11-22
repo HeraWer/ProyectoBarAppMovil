@@ -65,7 +65,7 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListaCategorias.class);
                 numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
-                recuperarTicket(numMesa);
+                recuperarTicket();
                 v.getContext().startActivity(intent);
             }
         });
@@ -77,8 +77,8 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
         return mesasArrayList.size();
     }
 
-    public void recuperarTicket(final int numMesa){
-        final String recuperarComanda = "RECUPERARTICKET " + numMesa;
+    public void recuperarTicket(){
+
         final CountDownLatch latch = new CountDownLatch(1);
         new Thread(new Runnable() {
             @Override
@@ -87,7 +87,7 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
                 try {
                     connection = new ConnectionClass();
                     Object o;
-                    o = connection.sendMessage(new Message(recuperarComanda));
+                    o = connection.sendMessage(new Message("RECUPERARTICKET " + numMesa));
                     Ticket t = (Ticket) o;
                     if(t == null){
                         t = new Ticket(numMesa);
