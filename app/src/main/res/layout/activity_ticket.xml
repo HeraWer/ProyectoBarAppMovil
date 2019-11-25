@@ -24,10 +24,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ProductRecyclerView"
         android:layout_width="382dp"
-        android:layout_height="483dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="60dp"
         android:background="#01000000"
-        android:maxHeight="483dp"
         app:layout_constraintBottom_toTopOf="@+id/enviarPedido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
