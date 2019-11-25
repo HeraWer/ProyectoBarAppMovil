@@ -69,7 +69,7 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
         if(Search.getTicket(Integer.parseInt(mesas)) != null) {
             nameTextView.setBackgroundColor(holder.c.getColor(R.color.busyTable));
         }else{
-            nameTextView.setBackgroundColor(holder.c.getColor(R.color.actionBar));
+            nameTextView.setBackground(holder.c.getDrawable(R.drawable.radiusborder));
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

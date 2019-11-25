@@ -6,5 +6,5 @@
     <color name="Base"></color>
     <color name="actionBar">#2F4058</color>
     <color name="divider">#00000000</color>
-    <color name="busyTable">#30800000</color>
+    <color name="busyTable">#70800000</color>
 </resources>
