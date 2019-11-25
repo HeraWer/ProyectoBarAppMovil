@@ -21,13 +21,13 @@ public class Mesas extends AppCompatActivity {
     ArrayList<String> listNumMesa;
     RecyclerView listView;
     MesasAdapter adapter;
-    private String etiqueta = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesas);
-        recuperarTicket();
+
+
         if(tickets == null){
             tickets = new ArrayList<Ticket>();
         }
@@ -45,6 +45,8 @@ public class Mesas extends AppCompatActivity {
             listaMesas.add("Mesa " + i);
             listNumMesa.add(String.valueOf(i));
         }
+
+
 
 
 
@@ -82,6 +84,18 @@ public class Mesas extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recuperarTicket();
+
+        Ticket t = Search.getTicket(numMesa);
+            if (t != null && t.getProductosComanda().size() == 0)
+                tickets.remove(t);
+
+        adapter.notifyDataSetChanged();
     }
 }
 

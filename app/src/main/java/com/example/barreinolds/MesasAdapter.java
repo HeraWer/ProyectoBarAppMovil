@@ -1,7 +1,9 @@
 package com.example.barreinolds;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import static com.example.barreinolds.Mesas.listaMesas;
 import static com.example.barreinolds.Mesas.numMesa;
 import static com.example.barreinolds.Mesas.tickets;
 
+@TargetApi(23)
 public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> {
 
 
@@ -55,16 +58,25 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MesasAdapter.ViewHolder holder, final int position) {
 
-        String mesas = mesasArrayList.get(position);
+        final String mesas = mesasArrayList.get(position);
+
+
+
 
         TextView nameTextView = holder.tableName;
         nameTextView.setText(mesas);
+
+        if(Search.getTicket(Integer.parseInt(mesas)) != null) {
+            nameTextView.setBackgroundColor(holder.c.getColor(R.color.busyTable));
+        }else{
+            nameTextView.setBackgroundColor(holder.c.getColor(R.color.actionBar));
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListaCategorias.class);
-                numMesa = Integer.parseInt(listaMesas.get(position).split(" ")[1]);
+                numMesa = Integer.parseInt(mesas);
                 v.getContext().startActivity(intent);
             }
         });

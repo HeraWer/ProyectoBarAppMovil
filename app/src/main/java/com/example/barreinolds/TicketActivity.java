@@ -61,6 +61,7 @@ public class TicketActivity extends AppCompatActivity {
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
                     adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                     new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
+
                 }
             };
 }
