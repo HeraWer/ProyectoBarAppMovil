@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 /*
 Clase donde se crea la conexion con el server
@@ -21,20 +22,19 @@ public class ConnectionClass {
     /*
     Atributos de clase y datos para la conexión
      */
-    private byte[] addr = new byte[]{(byte) 10, (byte) 151, (byte) 104, (byte) 151};
+    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 56, (byte) 1};
     public static final int PORT = 1234;
-    public InetAddress serverIP = InetAddress.getByAddress(addr);
-    public static Socket socket = new Socket();
-    private ObjectOutputStream outputServer;
-    private ObjectInputStream inputClient;
+    InetAddress serverIP = InetAddress.getByAddress(addr);
+    Socket socket = new Socket(serverIP, PORT);
+    private ObjectOutputStream outputServer = new ObjectOutputStream(socket.getOutputStream());
+    private ObjectInputStream inputClient = new ObjectInputStream(socket.getInputStream());
 
     /*
-    Constructor vacío
+    Constructor donde conectamos el socket y asignamos un Timeout
+    Ademas se cogen los input y output streams del socket
      */
     public ConnectionClass() throws IOException {
-        socket.connect(new InetSocketAddress(serverIP, PORT), 3000);
-        outputServer = new ObjectOutputStream(socket.getOutputStream());
-        inputClient = new ObjectInputStream(socket.getInputStream());
+
     }
 
     /*
@@ -74,8 +74,5 @@ public class ConnectionClass {
         return null;
     }
 
-    public static void showToast(Context c){
-        Toast.makeText(c, "Conexión rechazada", Toast.LENGTH_LONG).show();
-    }
 
 }
