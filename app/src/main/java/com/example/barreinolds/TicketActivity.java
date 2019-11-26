@@ -18,6 +18,7 @@ import static com.example.barreinolds.TicketProductsAdaper.productsAdapterArray;
 public class TicketActivity extends AppCompatActivity {
 
     TextView ticketTitle;
+    public static TextView totalTicket;
     RecyclerView productosRecyclerView;
     TicketProductsAdaper adapter;
     Button enviarPedido;
@@ -28,6 +29,9 @@ public class TicketActivity extends AppCompatActivity {
 
         ticketTitle = findViewById(R.id.TicketTitle);
         ticketTitle.setText("Pedido mesa " + Mesas.numMesa);
+
+        totalTicket = findViewById(R.id.totalPrecioTicket);
+        calcularTotal();
 
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
         adapter = new TicketProductsAdaper(Search.getTicket(Mesas.numMesa).getProductosComanda());
@@ -74,8 +78,14 @@ public class TicketActivity extends AppCompatActivity {
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
                     adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    calcularTotal();
                     sendTicket();
 
                 }
             };
+
+    public static void calcularTotal(){
+        float total = Search.getTotalPrice(Search.getTicket(Mesas.numMesa));
+        TicketActivity.totalTicket.setText("Total: " + String.format("%.2f", (total + "\nTotal IVA: " + (total + (total*0.1)))));
+    }
 }

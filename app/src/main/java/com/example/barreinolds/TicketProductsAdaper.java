@@ -93,10 +93,13 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
             @Override
             public void onClick(View v) {
                 productsAdapterArray.remove(holderForOnClick.getAdapterPosition());
+                TicketActivity.calcularTotal();
                 TicketProductsAdaper.this.notifyItemRemoved(holderForOnClick.getAdapterPosition());
                 new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
             }
         });
+
+
 
 
     }
