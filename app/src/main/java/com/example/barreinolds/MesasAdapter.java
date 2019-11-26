@@ -1,9 +1,7 @@
 package com.example.barreinolds;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
 
-import static com.example.barreinolds.Mesas.listaMesas;
 import static com.example.barreinolds.Mesas.numMesa;
-import static com.example.barreinolds.Mesas.tickets;
 
-@TargetApi(23)
 public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> {
 
 
@@ -67,9 +60,9 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
         nameTextView.setText(mesas);
 
         if(Search.getTicket(Integer.parseInt(mesas)) != null) {
-            nameTextView.setBackgroundColor(holder.c.getColor(R.color.busyTable));
+            nameTextView.setBackground(holder.c.getDrawable(R.drawable.borderradiusred));
         }else{
-            nameTextView.setBackground(holder.c.getDrawable(R.drawable.radiusborder));
+            nameTextView.setBackground(holder.c.getDrawable(R.drawable.borderradiusblue));
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

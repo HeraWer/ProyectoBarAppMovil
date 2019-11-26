@@ -11,7 +11,7 @@
         android:layout_height="80dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/radiusborder"
+        android:background="@drawable/borderradiusblue"
         android:divider="#1a1a1a"
         android:dividerHeight="15dp"
         android:elevation="20dp"

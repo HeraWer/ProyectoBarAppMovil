@@ -5,14 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 import static com.example.barreinolds.TicketProductsAdaper.productsAdapterArray;
 
@@ -33,21 +32,36 @@ public class TicketActivity extends AppCompatActivity {
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
         adapter = new TicketProductsAdaper(Search.getTicket(Mesas.numMesa).getProductosComanda());
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(productosRecyclerView);
-        ((SimpleItemAnimator) productosRecyclerView.getItemAnimator()).setRemoveDuration(800);
+        productosRecyclerView.getItemAnimator().setRemoveDuration(800);
         productosRecyclerView.setAdapter(adapter);
-        // Set layout manager to position the items
         productosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         enviarPedido = findViewById(R.id.enviarPedido);
         enviarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
+                sendTicket();
             }
         });
 
     }
 
+    public void sendTicket(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Creamos el objeto que nos conecta al server
+                ConnectionClass connection = null;
+                try {
+                    // Lo inicializamos
+                    connection = new ConnectionClass();
+                    connection.sendTicket(Search.getTicket(Mesas.numMesa));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback =
             new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
@@ -60,7 +74,7 @@ public class TicketActivity extends AppCompatActivity {
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
                     adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-                    new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
+                    sendTicket();
 
                 }
             };

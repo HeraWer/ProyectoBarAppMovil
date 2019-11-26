@@ -3,7 +3,6 @@ package com.example.barreinolds;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlSerializer;

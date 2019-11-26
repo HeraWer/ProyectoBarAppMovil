@@ -14,7 +14,7 @@
         android:id="@+id/nombre_empleados"
         android:layout_width="315dp"
         android:layout_height="wrap_content"
-        android:background="@color/actionBar"
+        android:background="@drawable/borderradiusblue"
         android:divider="#1a1a1a"
         android:dividerHeight="1dp"
         android:elevation="20dp"

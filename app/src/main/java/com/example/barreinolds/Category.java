@@ -3,22 +3,40 @@ package com.example.barreinolds;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/*
+Esta es la clase que define a las categorias.
+Implementa la clase Serializable para poderse enviar entre
+Server y cliente
+ */
 public class Category implements Serializable {
 
+    /*
+    Atributos de clase
+     */
     private static final long serialVersionUID = 1L;
     private int id;
     private String nCategory;
     private ArrayList<Product> listProducts;
 
+    /*
+    Constructor vacio en el que se inicializa el array de productos
+     */
     public Category(){
         ArrayList<Product> listProducts = new ArrayList<Product>();
     }
 
+    /*
+    Constructor donde se rellenan los campos y se inicializa el array de productos
+     */
     public Category(int id, String nCategory) {
         this.id = id;
         this.nCategory = nCategory;
+        listProducts = new ArrayList<Product>();
     }
 
+    /*
+    Getters y Setters
+     */
     public int getId() {
         return id;
     }

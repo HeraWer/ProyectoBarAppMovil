@@ -10,6 +10,7 @@ public class Camarero implements Serializable {
     private int id;
     private String nombre;
     private String username;
+    private String password;
     private static final long serialVersionUID = 3L;
     /*
      * Constructor vacío.
@@ -53,4 +54,11 @@ public class Camarero implements Serializable {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

@@ -12,7 +12,7 @@
         android:layout_height="57dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/actionBar"
+        android:background="@drawable/borderradiusblue"
         android:divider="#1a1a1a"
         android:dividerHeight="15dp"
         android:elevation="20dp"

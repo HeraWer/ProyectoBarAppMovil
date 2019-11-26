@@ -31,5 +31,13 @@ public class Search {
         return null;
     }
 
+    public static boolean lookForTicketTable(int numMesa) {
+        for (Ticket t : Mesas.tickets) {
+            if (t.getMesa() == numMesa)
+                return true;
+        }
+        return false;
+    }
+
 
 }
