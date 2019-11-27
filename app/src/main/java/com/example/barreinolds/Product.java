@@ -11,7 +11,9 @@ public class Product implements Serializable {
     private int cantidad;
     private String image_desktop;
     private String image_movil;
+    private boolean served;
     private static final long serialVersionUID = 2L;
+
 
     public Product(int id, String name, String description, String price, int cantidad, String image_desktop, String image_movil) {
         this.id = id;
@@ -21,10 +23,12 @@ public class Product implements Serializable {
         this.cantidad = cantidad;
         this.image_desktop = image_desktop;
         this.image_movil = image_movil;
+        this.served = false;
     }
 
     public Product() {
         cantidad = 0;
+        served = false;
     }
 
     public int getId() {
@@ -82,4 +86,8 @@ public class Product implements Serializable {
     public void setImage_desktop(String image_desktop) {
         this.image_desktop = image_desktop;
     }
+
+    public boolean isServed() { return served; }
+
+    public void setServed(boolean served) { this.served = served; }
 }
