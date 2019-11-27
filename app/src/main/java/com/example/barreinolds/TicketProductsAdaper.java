@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         public TextView productPriceTicket;
         public TextView productTotalTicket;
         public ImageButton deleteProduct;
+        public LinearLayout layoutTicket;
         public Context c;
 
         public ViewHolder(View itemView) {
@@ -39,6 +41,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
             productPriceTicket = itemView.findViewById(R.id.productPriceTicket);
             productTotalTicket = itemView.findViewById(R.id.productTotalTicket);
             deleteProduct = itemView.findViewById(R.id.productDeleteTicket);
+            layoutTicket = itemView.findViewById(R.id.linLayout);
         }
     }
 
@@ -68,6 +71,11 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         Product product = productsAdapterArray.get(position);
         final ViewHolder holderForOnClick = holder;
 
+        if(product.isServed())
+            holder.layoutTicket.setBackground(holder.c.getDrawable(R.drawable.served_products_background));
+        else
+            holder.layoutTicket.setBackground(holder.c.getDrawable(R.drawable.not_served_products_background));
+
         // Set item views based on your views and data model
         ImageView imageImageView = holder.productImageTicket;
         String uri = product.getImage_movil();
@@ -86,7 +94,7 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         priceTextView.setText(product.getPrice());
 
         TextView totalTextView = holder.productTotalTicket;
-        totalTextView.setText(String.valueOf(Float.parseFloat(product.getPrice()) * product.getCantidad()));
+        totalTextView.setText(String.format("%.2f", NumberFormat.round(Float.parseFloat(product.getPrice()) * product.getCantidad())));
 
         ImageButton deleteImageButton = holder.deleteProduct;
         deleteImageButton.setOnClickListener(new View.OnClickListener() {

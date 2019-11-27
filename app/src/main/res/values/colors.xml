@@ -7,4 +7,6 @@
     <color name="actionBar">#2F4058</color>
     <color name="divider">#00000000</color>
     <color name="busyTable">#70800000</color>
+    <color name="servedProduct">#8A308D27</color>
+    <color name="notServedProduct">#502F4058</color>
 </resources>
