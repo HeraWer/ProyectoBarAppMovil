@@ -22,7 +22,6 @@ public class Empleados extends AppCompatActivity {
     static ArrayList<Camarero> listaEmpleados;
     static int totalMesas;
     static Camarero camarero;
-
     // Adapter del RecyclerView
     EmpleadosAdapter adapter;
 
@@ -39,7 +38,6 @@ public class Empleados extends AppCompatActivity {
         // Llamamos a los metodos de esta clase que recuperan camareros y mesas:
         recuperarCamareros();
         recuperarMesas();
-
         // Si no podemos recuperar del server el array de camareros.
         // Inicializamos el array con un valor por defecto
         if (listaEmpleados == null) {
@@ -53,8 +51,8 @@ public class Empleados extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        if(!ConnectionClass.socket.isConnected())
-            Toast.makeText(Empleados.this, "Conexión rechazada", Toast.LENGTH_LONG).show();
+        /*if(!ConnectionClass.socket.isConnected())
+            Toast.makeText(Empleados.this, "Conexión rechazada", Toast.LENGTH_LONG).show();*/
     }
 
     /*
@@ -87,17 +85,20 @@ public class Empleados extends AppCompatActivity {
                     // Dentro del objeto introducimos el retornado por el server
                     // Le enviamos el mensaje el server:
                     o = connection.sendMessage(new Message("CAMAREROS"));
-
                     // Igualamos la lista de empleados al objeto
                     listaEmpleados = (ArrayList<Camarero>) o;
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
+                }finally {
+                    // Descontamos uno en el latch
+                    latch.countDown();
                 }
 
-                // Descontamos uno en el latch
-                latch.countDown();
+
             }
         }).start();
         try {
@@ -134,20 +135,21 @@ public class Empleados extends AppCompatActivity {
                     // Creamos el objeto que recuperaremos del server
                     Object o;
 
-                    // Dentro del objeto introducimos el retornado por el server
-                    // Le enviamos el mensaje el server:
-                    o = connection.sendMessage(new Message("NUMMESAS"));
+    // Dentro del objeto introducimos el retornado por el server
+    // Le enviamos el mensaje el server:
+    o = connection.sendMessage(new Message("NUMMESAS"));
+    // Igualamos el total de mesas al objeto
+    totalMesas = (Integer) o;
 
-                    // Igualamos el total de mesas al objeto
-                    totalMesas = (Integer) o;
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
+                }finally {
+                    // Descontamos uno en el latch
+                    latch.countDown();
                 }
 
-                // Descontamos uno en el latch
-                latch.countDown();
             }
         }).start();
         try {

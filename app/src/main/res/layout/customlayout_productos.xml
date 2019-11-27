@@ -2,82 +2,131 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:background="#502F4058"
     android:layout_marginBottom="20dp"
     android:elevation="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     >
 
     <ImageView
         android:id="@+id/imagen_producto"
         android:layout_width="40dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:adjustViewBounds="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@drawable/ic_launcher_background"
+        android:maxWidth="40dp"
+        android:maxHeight="40dp"/>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/imagen_producto"
+        android:id="@+id/slp1"/>
 
     <TextView
         android:id="@+id/nombre_producto"
-        android:layout_width="112dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:lines="3"
+        android:paddingEnd="5dp"
+        android:maxWidth="150dp"
         android:text="Producto"
+        android:gravity="center_horizontal|center_vertical"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
 
         />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/nombre_producto"
+        android:id="@+id/slp2"/>
 
     <TextView
         android:id="@+id/precio_producto"
-        android:layout_width="50dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:text="Precio"
+        android:lines="3"
+        android:gravity="center_horizontal|center_vertical"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-
-
         />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/precio_producto"
+        android:id="@+id/slp3"/>
 
     <Button
         android:id="@+id/boton_resta"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
         android:text="-"
+        android:adjustViewBounds="true"
+        android:gravity="center_horizontal|center_vertical"
         android:textAlignment="center"
         android:textColor="@android:color/white"
+        android:maxHeight="40dp"
+        android:maxWidth="40dp"
 
         />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/boton_resta"
+        android:id="@+id/slp4"/>
+
 
     <TextView
         android:id="@+id/cantidad_producto"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:text="0"
+        android:gravity="center_horizontal|center_vertical"
         android:textAlignment="center"
         android:textColor="@android:color/white"
 
         />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/cantidad_producto"
+        android:id="@+id/slp5"/>
 
     <Button
         android:id="@+id/boton_suma"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="70dp"
         android:text="+"
+        android:gravity="center_horizontal|center_vertical"
         android:textAlignment="center"
         android:textColor="@android:color/white"
 
         />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:layout_toStartOf="@id/boton_suma"
+        android:id="@+id/slp6"/>
 
 
 </LinearLayout>

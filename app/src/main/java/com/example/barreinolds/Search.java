@@ -12,6 +12,14 @@ public class Search {
         return null;
     }
 
+    public static float getTotalPrice(Ticket t){
+        float total = 0f;
+        for(Product p : t.getProductosComanda()){
+            total = total + (Float.parseFloat(p.getPrice()) * p.getCantidad());
+        }
+        return total;
+    }
+
     public static void deleteTicket(int numMesa){
         for(Ticket t : Mesas.tickets){
             if(t.getMesa() == numMesa) {
