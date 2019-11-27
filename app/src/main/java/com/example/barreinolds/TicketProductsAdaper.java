@@ -95,7 +95,8 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
                 productsAdapterArray.remove(holderForOnClick.getAdapterPosition());
                 TicketActivity.calcularTotal();
                 TicketProductsAdaper.this.notifyItemRemoved(holderForOnClick.getAdapterPosition());
-                new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
+                TicketActivity.sendTicket();
+                //new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
             }
         });
 

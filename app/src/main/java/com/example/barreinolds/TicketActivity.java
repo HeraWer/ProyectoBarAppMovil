@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.example.barreinolds.TicketProductsAdaper.productsAdapterArray;
 
@@ -20,6 +21,7 @@ public class TicketActivity extends AppCompatActivity {
     TextView ticketTitle;
     public static TextView totalTicket;
     RecyclerView productosRecyclerView;
+    ArrayList<Product> aLProductsTicket;
     TicketProductsAdaper adapter;
     Button enviarPedido;
 
@@ -27,14 +29,15 @@ public class TicketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket);
 
+
         ticketTitle = findViewById(R.id.TicketTitle);
         ticketTitle.setText("Pedido mesa " + Mesas.numMesa);
 
         totalTicket = findViewById(R.id.totalPrecioTicket);
         calcularTotal();
-
+        aLProductsTicket = Search.getTicket(Mesas.numMesa).getProductosComanda();
         productosRecyclerView = findViewById(R.id.ProductRecyclerView);
-        adapter = new TicketProductsAdaper(Search.getTicket(Mesas.numMesa).getProductosComanda());
+        adapter = new TicketProductsAdaper(aLProductsTicket);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(productosRecyclerView);
         productosRecyclerView.getItemAnimator().setRemoveDuration(800);
         productosRecyclerView.setAdapter(adapter);
@@ -50,7 +53,7 @@ public class TicketActivity extends AppCompatActivity {
 
     }
 
-    public void sendTicket(){
+    public static void sendTicket(){
         new Thread(new Runnable() {
             @Override
             public void run() {
