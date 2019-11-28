@@ -89,6 +89,6 @@ public class TicketActivity extends AppCompatActivity {
 
     public static void calcularTotal(){
         float total = Search.getTotalPrice(Search.getTicket(Mesas.numMesa));
-        TicketActivity.totalTicket.setText("Total: " + NumberFormat.round(total) + "\nTotal IVA: " + NumberFormat.round(total + (total*0.1f)));
+        TicketActivity.totalTicket.setText("Total: " + NumberFormat.round(total) + " €\nTotal IVA: " + NumberFormat.round(total + (total*0.1f)) + "€");
     }
 }
