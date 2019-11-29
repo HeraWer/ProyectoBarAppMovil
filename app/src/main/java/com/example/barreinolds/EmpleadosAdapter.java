@@ -2,14 +2,19 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
+
 import static android.view.View.*;
 import static com.example.barreinolds.Empleados.listaEmpleados;
 
@@ -53,7 +58,7 @@ public class EmpleadosAdapter extends RecyclerView.Adapter<EmpleadosAdapter.View
     Constructor donde se iguala el ArrayList del adapter al que se le pase
     por parametro en la clase Empleados
      */
-    public EmpleadosAdapter(ArrayList<Camarero> employee){
+    public EmpleadosAdapter(ArrayList<Camarero> employee) {
         this.empleadoAdapterArray = employee;
     }
 
@@ -82,7 +87,8 @@ public class EmpleadosAdapter extends RecyclerView.Adapter<EmpleadosAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         // Cogemos el Camarero de cada elemento para mostrar sus datos
         Camarero empleados = empleadoAdapterArray.get(position);
-
+        final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(holder.c, R.raw.bclick);
         // Seteamos el texto del TextView al nombre del empleado
         TextView nameTextView = holder.employeeName;
         nameTextView.setText(empleados.getNombre());
@@ -93,13 +99,15 @@ public class EmpleadosAdapter extends RecyclerView.Adapter<EmpleadosAdapter.View
             public void onClick(View v) {
                 // En el onClick le decimos que cambie al Intent de mesas al clickar un empleado
                 Intent intent = new Intent(v.getContext(), Mesas.class);
+                vb.vibrate(70);
+                mp.start();
                 Empleados.camarero = listaEmpleados.get(position);
                 v.getContext().startActivity(intent);
             }
 
         });
 
-        }
+    }
 
 
     @Override

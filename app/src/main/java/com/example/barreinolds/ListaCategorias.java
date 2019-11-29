@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 
 import android.widget.ImageButton;
@@ -44,13 +47,16 @@ public class ListaCategorias extends AppCompatActivity {
     /*
     Este metodo busca el boton de ver comanda y le añade un onClickListener
      */
-    public void manageTicketButton(){
+    public void manageTicketButton() {
         b = findViewById(R.id.verComandaButton);
+        final Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.bclick);
         b.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
                 // Si existe un ticket en la mesa actual, hacemos un intent a la TicketActivity
                 if (Search.lookForTicketTable(Mesas.numMesa)) {
+                    vb.vibrate(70);
+                    mp.start();
                     Intent i = new Intent(ListaCategorias.this, TicketActivity.class);
                     startActivity(i);
                 }
@@ -63,7 +69,7 @@ public class ListaCategorias extends AppCompatActivity {
     Para mas informacion de como funciona, mirar los comentarios de metodos
     parecidos en la clase Empleados.
      */
-    public void recuperarCategorias(){
+    public void recuperarCategorias() {
 
         final CountDownLatch latch = new CountDownLatch(1);
         new Thread(new Runnable() {

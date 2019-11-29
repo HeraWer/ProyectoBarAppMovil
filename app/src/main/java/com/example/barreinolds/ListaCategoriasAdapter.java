@@ -2,6 +2,8 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +50,17 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
     public void onBindViewHolder(@NonNull ListaCategoriasAdapter.ViewHolder holder, final int position) {
         final Category category = categoryArrayAdapter.get(position);
 
+        final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(holder.c, R.raw.bclick);
+
         TextView nameTextView = holder.categoriaName;
         nameTextView.setText(category.getnCategory());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vb.vibrate(70);
+                mp.start();
                 ListaProductos.productos = category.getListProducts();
                 Intent intent = new Intent(v.getContext(), ListaProductos.class);
                 intent.putExtra("Categoria", category.getnCategory());

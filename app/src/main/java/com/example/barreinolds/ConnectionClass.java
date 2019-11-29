@@ -22,7 +22,7 @@ public class ConnectionClass {
     /*
     Atributos de clase y datos para la conexión
      */
-    private byte[] addr = new byte[]{(byte) 10, (byte) 151, (byte) 104, (byte) 151};
+    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 40, (byte) 202};
     public static final int PORT = 1234;
     InetAddress serverIP = InetAddress.getByAddress(addr);
     Socket socket = new Socket(serverIP, PORT);

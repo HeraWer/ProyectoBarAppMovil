@@ -2,6 +2,8 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,14 +98,19 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         TextView totalTextView = holder.productTotalTicket;
         totalTextView.setText(String.format("%.2f", NumberFormat.round(Float.parseFloat(product.getPrice()) * product.getCantidad())));
 
+        final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(holder.c, R.raw.restar);
+
         ImageButton deleteImageButton = holder.deleteProduct;
         deleteImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                productsAdapterArray.remove(holderForOnClick.getAdapterPosition());
-                TicketActivity.calcularTotal();
-                TicketProductsAdaper.this.notifyItemRemoved(holderForOnClick.getAdapterPosition());
-                TicketActivity.sendTicket();
+                    @Override
+                    public void onClick(View v) {
+                        vb.vibrate(70);
+                        mp.start();
+                        productsAdapterArray.remove(holderForOnClick.getAdapterPosition());
+                        TicketActivity.calcularTotal();
+                        TicketProductsAdaper.this.notifyItemRemoved(holderForOnClick.getAdapterPosition());
+                        TicketActivity.sendTicket();
                 //new EnviarTicket().execute(Search.getTicket(Mesas.numMesa));
             }
         });

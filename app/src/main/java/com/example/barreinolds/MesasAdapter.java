@@ -2,6 +2,8 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,8 +55,8 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
 
         final String mesas = mesasArrayList.get(position);
 
-
-
+        final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(holder.c, R.raw.bclick);
 
         TextView nameTextView = holder.tableName;
         nameTextView.setText(mesas);
@@ -68,6 +70,8 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vb.vibrate(70);
+                mp.start();
                 Intent intent = new Intent(v.getContext(), ListaCategorias.class);
                 numMesa = Integer.parseInt(mesas);
                 v.getContext().startActivity(intent);

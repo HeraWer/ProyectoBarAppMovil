@@ -2,6 +2,8 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +84,9 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         itemPrice.setText(product.getPrice() + "€");
 
         final TextView itemQuantity = holder.lProductosQuantity;
+        final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mpsuma = MediaPlayer.create(holder.c, R.raw.sumar);
+        final MediaPlayer mpresta = MediaPlayer.create(holder.c, R.raw.restar);
 
         Ticket t = Search.getTicket(Mesas.numMesa);
         final Ticket tForOnClick = t;
@@ -97,6 +102,8 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         itemPlus1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vb.vibrate(70);
+                mpsuma.start();
                 Product p = Search.compareProducts(pLPForOnClick, tForOnClick.getProductosComanda());
                 if (p == null)
                     p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, pLPForOnClick.getImage_desktop(), pLPForOnClick.getImage_movil());
@@ -119,6 +126,8 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         itemMinus1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vb.vibrate(70);
+                mpresta.start();
                 if (!itemQuantity.getText().equals("0")) {
                     pTicketForOnClick.setCantidad(pTicketForOnClick.getCantidad() - 1);
                     itemQuantity.setText(String.valueOf(pTicketForOnClick.getCantidad()));

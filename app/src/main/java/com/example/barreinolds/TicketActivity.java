@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,17 +46,22 @@ public class TicketActivity extends AppCompatActivity {
         productosRecyclerView.setAdapter(adapter);
         productosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        final Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.enviar2);
+
         enviarPedido = findViewById(R.id.enviarPedido);
         enviarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vb.vibrate(70);
+                mp.start();
                 sendTicket();
             }
         });
 
     }
 
-    public static void sendTicket(){
+    public static void sendTicket() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -79,6 +87,10 @@ public class TicketActivity extends AppCompatActivity {
 
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                    Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    MediaPlayer mp = MediaPlayer.create(TicketActivity.this, R.raw.restar);
+                    mp.start();
+                    vb.vibrate(70);
                     productsAdapterArray.remove(viewHolder.getAdapterPosition());
                     adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                     calcularTotal();
@@ -87,8 +99,8 @@ public class TicketActivity extends AppCompatActivity {
                 }
             };
 
-    public static void calcularTotal(){
+    public static void calcularTotal() {
         float total = Search.getTotalPrice(Search.getTicket(Mesas.numMesa));
-        TicketActivity.totalTicket.setText("Total: " + NumberFormat.round(total) + "\nTotal IVA: " + NumberFormat.round(total + (total*0.1f)));
+        TicketActivity.totalTicket.setText("Total: " + NumberFormat.round(total) + "\nTotal IVA: " + NumberFormat.round(total + (total * 0.1f)));
     }
 }
