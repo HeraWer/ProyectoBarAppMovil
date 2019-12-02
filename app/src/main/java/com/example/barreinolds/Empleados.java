@@ -3,9 +3,10 @@ package com.example.barreinolds;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-
+import android.view.View;
+import android.widget.Button;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -22,6 +23,7 @@ public class Empleados extends AppCompatActivity {
     static ArrayList<Camarero> listaEmpleados;
     static int totalMesas;
     static Camarero camarero;
+    Button buttonR;
     // Adapter del RecyclerView
     EmpleadosAdapter adapter;
 
@@ -42,7 +44,7 @@ public class Empleados extends AppCompatActivity {
         // Inicializamos el array con un valor por defecto
         if (listaEmpleados == null) {
             listaEmpleados = new ArrayList<Camarero>();
-            listaEmpleados.add(new Camarero(1, "David", "dasafe"));
+            listaEmpleados.add(new Camarero(1, "David", "dasafe", null));
         }
 
         // Gestionamos el recyclerView
@@ -50,6 +52,17 @@ public class Empleados extends AppCompatActivity {
         adapter = new EmpleadosAdapter(listaEmpleados);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Boton para registrar usuario
+        buttonR = findViewById(R.id.buttonRegister);
+        buttonR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegistroActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         /*if(!ConnectionClass.socket.isConnected())
             Toast.makeText(Empleados.this, "Conexión rechazada", Toast.LENGTH_LONG).show();*/

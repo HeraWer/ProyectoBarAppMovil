@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/moesbar_108047"
@@ -13,19 +13,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Empleados"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".TicketActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".Pedido"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".ListaProductos"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".ListaCategorias"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".Mesas"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".SplashActivity"
+        <activity android:name=".RegistroActivity"></activity>
+        <activity
+            android:name=".Empleados"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".TicketActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".Pedido"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".ListaProductos"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".ListaCategorias"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".Mesas"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

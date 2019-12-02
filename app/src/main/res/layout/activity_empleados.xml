@@ -29,7 +29,7 @@
         android:layout_width="315dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="80dp"
         android:divider="@color/divider"
         android:dividerHeight="0dp"
 
@@ -37,7 +37,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_empleados"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_empleados" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="258dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/Base"
+        android:drawableBottom="@drawable/add_employee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
