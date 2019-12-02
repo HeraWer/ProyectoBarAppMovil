@@ -13,11 +13,11 @@ public class Product implements Serializable {
     private String image_desktop;
     private String image_movil;
     private boolean served;
-    private InputStream imgBlob;
+    private byte[] imgBlob;
     private static final long serialVersionUID = 2L;
 
 
-    public Product(int id, String name, String description, String price, int cantidad, String image_desktop, String image_movil) {
+    public Product(int id, String name, String description, String price, int cantidad, String image_desktop, String image_movil, byte[] imgBlob) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -26,6 +26,7 @@ public class Product implements Serializable {
         this.image_desktop = image_desktop;
         this.image_movil = image_movil;
         this.served = false;
+        this.imgBlob = imgBlob;
     }
 
     public Product() {
@@ -93,11 +94,11 @@ public class Product implements Serializable {
 
     public void setServed(boolean served) { this.served = served; }
 
-    public InputStream getImgBlob() {
+    public byte[] getImgBlob() {
         return imgBlob;
     }
 
-    public void setImgBlob(InputStream imgBlob) {
+    public void setImgBlob(byte[] imgBlob) {
         this.imgBlob = imgBlob;
     }
 }

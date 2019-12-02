@@ -1,6 +1,8 @@
 package com.example.barreinolds;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
@@ -80,11 +82,12 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
 
         // Set item views based on your views and data model
         ImageView imageImageView = holder.productImageTicket;
-        String uri = product.getImage_movil();
-        int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
-        Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
+        Bitmap prodPhoto = BitmapFactory.decodeByteArray(product.getImgBlob(), 0, product.getImgBlob().length);
+//        String uri = product.getImage_movil();
+//        int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
+//        Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
 
-        imageImageView.setImageDrawable(imagenDra);
+        imageImageView.setImageBitmap(prodPhoto);
 
         TextView nameTextView = holder.productNameTicket;
         nameTextView.setText(product.getName());

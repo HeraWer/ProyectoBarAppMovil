@@ -15,7 +15,7 @@ public class Camarero implements Serializable {
     private String nombre;
     private String username;
     private String password;
-    private InputStream imageEmployee;
+    private byte[] imageEmployee;
     private static final long serialVersionUID = 3L;
     /*
      * Constructor vacío.
@@ -27,7 +27,7 @@ public class Camarero implements Serializable {
      * Constructor en el que se le pasa el nombre y el numero
      * de mesa y se le asigna a sus atributos.
      */
-    public Camarero(int id, String nombre, String username, String password, InputStream imageEmployee) {
+    public Camarero(int id, String nombre, String username, String password, byte[] imageEmployee) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -71,15 +71,12 @@ public class Camarero implements Serializable {
         this.password = password;
     }
 
-    public InputStream getImageEmployee() {
+    public byte[] getImageEmployee() {
         return imageEmployee;
     }
 
-    public void setImageEmployee(InputStream imageEmployee) {
+    public void setImageEmployee(byte[] imageEmployee) {
         this.imageEmployee = imageEmployee;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 }

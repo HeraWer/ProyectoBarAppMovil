@@ -2,6 +2,10 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.view.LayoutInflater;
@@ -10,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategoriasAdapter.ViewHolder> {
@@ -52,9 +58,12 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
 
         final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
         final MediaPlayer mp = MediaPlayer.create(holder.c, R.raw.bclick);
-
+        //Bitmap prodPhoto = BitmapFactory.decodeByteArray(category.getImgBlob(), 0, category.getImgBlob().length);
+        ByteArrayInputStream bais = new ByteArrayInputStream(category.getImgBlob());
         TextView nameTextView = holder.categoriaName;
         nameTextView.setText(category.getnCategory());
+        Drawable bg = Drawable.createFromStream(bais, category.getId() + category.getnCategory().toLowerCase());
+        nameTextView.setBackground(bg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
