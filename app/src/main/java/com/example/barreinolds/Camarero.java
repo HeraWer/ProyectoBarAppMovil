@@ -3,6 +3,7 @@ package com.example.barreinolds;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
+import java.io.InputStream;
 import java.io.Serializable;
 /*
  * Esta es la clase que define a los camareros.
@@ -14,7 +15,7 @@ public class Camarero implements Serializable {
     private String nombre;
     private String username;
     private String password;
-    private Bitmap imageEmployee;
+    private InputStream imageEmployee;
     private static final long serialVersionUID = 3L;
     /*
      * Constructor vacío.
@@ -26,7 +27,7 @@ public class Camarero implements Serializable {
      * Constructor en el que se le pasa el nombre y el numero
      * de mesa y se le asigna a sus atributos.
      */
-    public Camarero(int id, String nombre, String username, String password, Bitmap imageEmployee) {
+    public Camarero(int id, String nombre, String username, String password, InputStream imageEmployee) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -70,11 +71,11 @@ public class Camarero implements Serializable {
         this.password = password;
     }
 
-    public Bitmap getImageEmployee() {
+    public InputStream getImageEmployee() {
         return imageEmployee;
     }
 
-    public void setImageEmployee(Bitmap imageEmployee) {
+    public void setImageEmployee(InputStream imageEmployee) {
         this.imageEmployee = imageEmployee;
     }
 

@@ -1,5 +1,6 @@
 package com.example.barreinolds;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class Category implements Serializable {
     private int id;
     private String nCategory;
     private ArrayList<Product> listProducts;
+    private InputStream imgBlob;
 
     /*
     Constructor vacio en el que se inicializa el array de productos
@@ -59,5 +61,13 @@ public class Category implements Serializable {
 
     public void setListProducts(ArrayList<Product> listProducts) {
         this.listProducts = listProducts;
+    }
+
+    public void setImgBlob(InputStream imgBlob){
+        this.imgBlob = imgBlob;
+    }
+
+    public InputStream getImgBlob(){
+        return this.imgBlob;
     }
 }

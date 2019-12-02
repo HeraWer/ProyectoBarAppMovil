@@ -1,6 +1,7 @@
 package com.example.barreinolds;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,8 +14,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
+@RequiresApi(24)
 public class RegistroActivity extends AppCompatActivity {
 
     private Button buttonCancelarR, buttonAceptarR;
@@ -81,12 +89,23 @@ public class RegistroActivity extends AppCompatActivity {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            employee.setImageEmployee(imageBitmap);
+            InputStream is = compressBitmap(imageBitmap);
+
+            employee.setImageEmployee(is);
             sendEmployee();
             Intent intent = new Intent(getApplicationContext(), Empleados.class);
             startActivity(intent);
             //prueba.setImageBitmap(employee.getImageEmployee());
         }
+    }
+
+    private InputStream compressBitmap(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] bmpData = baos.toByteArray();
+        InputStream is = new ByteArrayInputStream(bmpData);
+
+        return is;
     }
 
     public static void sendEmployee(){

@@ -1,5 +1,6 @@
 package com.example.barreinolds;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class Product implements Serializable {
@@ -12,6 +13,7 @@ public class Product implements Serializable {
     private String image_desktop;
     private String image_movil;
     private boolean served;
+    private InputStream imgBlob;
     private static final long serialVersionUID = 2L;
 
 
@@ -90,4 +92,12 @@ public class Product implements Serializable {
     public boolean isServed() { return served; }
 
     public void setServed(boolean served) { this.served = served; }
+
+    public InputStream getImgBlob() {
+        return imgBlob;
+    }
+
+    public void setImgBlob(InputStream imgBlob) {
+        this.imgBlob = imgBlob;
+    }
 }
