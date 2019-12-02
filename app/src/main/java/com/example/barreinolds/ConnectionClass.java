@@ -51,7 +51,7 @@ public class ConnectionClass {
      */
     public Object sendMessage(Message message) throws IOException, ClassNotFoundException {
         // Si el mensaje es CAMAREROS, enviamos mensaje y esperamos array de camareros
-        if(message.getRequest().equals("CAMAREROS")) {
+        /*if(message.getRequest().equals("CAMAREROS")) {
             outputServer.writeObject(message);
             return inputClient.readObject();
 
@@ -67,11 +67,18 @@ public class ConnectionClass {
             return inputClient.readObject();
 
         // Si el mensaje es RECUPERARTICKET, enviamos mensaje y esperamos array de tickets (comandas)
-        }else if(message.getRequest().equals("RECUPERARTICKET")){
+        }else if(message.getRequest().equals("RECUPERARTICKET")){*/
             outputServer.writeObject(message);
             return inputClient.readObject();
-        }
-        return null;
+        //}
+        //return null;
+    }
+
+    /*
+    Metodo que envía el ticket al server
+     */
+    public void sendEmployee(Camarero c) throws IOException {
+        outputServer.writeObject(c);
     }
 
 

@@ -5,4 +5,5 @@
     <string name="Pedido">Pedido</string>
     <string name="empleados">Camareros</string>
     <string name="enviar">Enviar Pedido</string>
+    <string name="registro">Registro</string>
 </resources>
