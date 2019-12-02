@@ -42,10 +42,10 @@ public class Empleados extends AppCompatActivity {
         recuperarMesas();
         // Si no podemos recuperar del server el array de camareros.
         // Inicializamos el array con un valor por defecto
-        if (listaEmpleados == null) {
-            listaEmpleados = new ArrayList<Camarero>();
-            listaEmpleados.add(new Camarero(1, "David", "dasafe", null));
-        }
+//        if (listaEmpleados == null) {
+//            listaEmpleados = new ArrayList<Camarero>();
+//            listaEmpleados.add(new Camarero(1, "David", "dasafe", null));
+//        }
 
         // Gestionamos el recyclerView
         recyclerView = findViewById(R.id.lista_empleados);
