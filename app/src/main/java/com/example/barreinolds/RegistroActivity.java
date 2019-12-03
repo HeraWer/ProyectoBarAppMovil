@@ -4,9 +4,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -42,20 +45,26 @@ public class RegistroActivity extends AppCompatActivity {
         //prueba = findViewById(R.id.pruebaView);
         employee = new Camarero();
 
+        final Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.bclick);
+
         buttonAceptarR = findViewById(R.id.buttonAceptRegister);
         buttonAceptarR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                vb.vibrate(70);
+                mp.start();
                 // Comprobamos que los campos de usuario y contraseña no estan vacios
-                if(nameEmployee.getText().toString().isEmpty() && passwordEmployee.getText().toString().isEmpty() && usuarioEmployee.getText().toString().isEmpty()){
+                if (nameEmployee.getText().toString().isEmpty() && passwordEmployee.getText().toString().isEmpty() && usuarioEmployee.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Los campos usuario y contraseña estan vacios", Toast.LENGTH_LONG).show();
-                }else if(nameEmployee.getText().toString().isEmpty()){
+                } else if (nameEmployee.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "El campo nombre esta vacio", Toast.LENGTH_LONG).show();
-                }else if(usuarioEmployee.getText().toString().isEmpty()){
+                } else if (usuarioEmployee.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "El campo usuario esta vacio", Toast.LENGTH_LONG).show();
-                }else if(passwordEmployee.getText().toString().isEmpty() || passwordEmployee.getText().length() < 6){
+                } else if (passwordEmployee.getText().toString().isEmpty() || passwordEmployee.getText().length() < 6) {
                     Toast.makeText(getApplicationContext(), "La contraseña esta vacia o es demasiado corta", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     employee.setNombre(nameEmployee.getText().toString());
                     employee.setUsername(usuarioEmployee.getText().toString());
                     employee.setPassword(passwordEmployee.getText().toString());
@@ -69,6 +78,8 @@ public class RegistroActivity extends AppCompatActivity {
         buttonCancelarR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vb.vibrate(70);
+                mp.start();
                 Intent intent = new Intent(getApplicationContext(), Empleados.class);
                 startActivity(intent);
             }
@@ -86,7 +97,7 @@ public class RegistroActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             InputStream is = compressBitmap(imageBitmap);
@@ -112,7 +123,7 @@ public class RegistroActivity extends AppCompatActivity {
         return is;
     }
 
-    public static void sendEmployee(){
+    public static void sendEmployee() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -133,7 +144,7 @@ public class RegistroActivity extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
         int len;
-        while((len = is.read(buffer)) != -1) {
+        while ((len = is.read(buffer)) != -1) {
             baos.write(buffer, 0, len);
         }
         return baos.toByteArray();

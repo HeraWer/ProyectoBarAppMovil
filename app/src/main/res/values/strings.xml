@@ -6,5 +6,7 @@
     <string name="empleados">Camareros</string>
     <string name="enviar">Enviar Pedido</string>
     <string name="registro">Registro</string>
-    <color name="white">#FCB627</color>
+    <color name="orange">#FCB627</color>
+    <color name="brown">#FFFFFF</color>
+    <color name="green">#7FBF40</color>
 </resources>

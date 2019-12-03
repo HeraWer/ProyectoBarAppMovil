@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/brown"
     tools:context=".Empleados">
 
     <TextView
         android:id="@+id/nombre_empleados"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@color/actionBar"
+        android:background="@color/orange"
         android:fontFamily="Montserrat"
         android:paddingTop="10dp"
         android:text="@string/empleados"

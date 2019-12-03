@@ -11,24 +11,24 @@ import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int DURACION_SPLASH = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.welcome);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.welcome_hawaiiano);
         mp.start();
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
                 Intent intent = new Intent(SplashActivity.this, Empleados.class);
                 startActivity(intent);
                 finish();
             }
-        }, DURACION_SPLASH);
+        });
+
+
     }
 }
