@@ -53,7 +53,7 @@ public class RegistroActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "El campo nombre esta vacio", Toast.LENGTH_LONG).show();
                 }else if(usuarioEmployee.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(), "El campo usuario esta vacio", Toast.LENGTH_LONG).show();
-                }else if(passwordEmployee.getText().toString().isEmpty() || passwordEmployee.getText().length() > 6){
+                }else if(passwordEmployee.getText().toString().isEmpty() || passwordEmployee.getText().length() < 6){
                     Toast.makeText(getApplicationContext(), "La contraseña esta vacia o es demasiado corta", Toast.LENGTH_LONG).show();
                 }else{
                     employee.setNombre(nameEmployee.getText().toString());
@@ -91,7 +91,11 @@ public class RegistroActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             InputStream is = compressBitmap(imageBitmap);
 
-            employee.setImageEmployee(is);
+            try {
+                employee.setImageEmployee(getByteFromInput(is));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             sendEmployee();
             Intent intent = new Intent(getApplicationContext(), Empleados.class);
             startActivity(intent);
@@ -123,6 +127,16 @@ public class RegistroActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    public static byte[] getByteFromInput(InputStream is) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len;
+        while((len = is.read(buffer)) != -1) {
+            baos.write(buffer, 0, len);
+        }
+        return baos.toByteArray();
     }
 }
 

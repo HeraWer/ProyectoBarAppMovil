@@ -37,21 +37,14 @@ public class Empleados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empleados);
 
-        // Llamamos a los metodos de esta clase que recuperan camareros y mesas:
-        recuperarCamareros();
-        recuperarMesas();
+
+
         // Si no podemos recuperar del server el array de camareros.
         // Inicializamos el array con un valor por defecto
 //        if (listaEmpleados == null) {
 //            listaEmpleados = new ArrayList<Camarero>();
 //            listaEmpleados.add(new Camarero(1, "David", "dasafe", null));
 //        }
-
-        // Gestionamos el recyclerView
-        recyclerView = findViewById(R.id.lista_empleados);
-        adapter = new EmpleadosAdapter(listaEmpleados);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Boton para registrar usuario
         buttonR = findViewById(R.id.buttonRegister);
@@ -173,5 +166,17 @@ public class Empleados extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Llamamos a los metodos de esta clase que recuperan camareros y mesas:
+        recuperarCamareros();
+        recuperarMesas();
 
+        // Gestionamos el recyclerView
+        recyclerView = findViewById(R.id.lista_empleados);
+        adapter = new EmpleadosAdapter(listaEmpleados);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 }

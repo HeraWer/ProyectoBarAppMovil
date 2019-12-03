@@ -2,15 +2,21 @@ package com.example.barreinolds;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -36,6 +42,7 @@ public class EmpleadosAdapter extends RecyclerView.Adapter<EmpleadosAdapter.View
          */
         public LinearLayout linLayoutEmpleados;
         public TextView employeeName;
+        public ImageView employeeImg;
 
         // Contexto de la activity (Empleados)
         public Context c;
@@ -48,6 +55,7 @@ public class EmpleadosAdapter extends RecyclerView.Adapter<EmpleadosAdapter.View
             super(itemView);
             linLayoutEmpleados = itemView.findViewById(R.id.linLayoutEmpleados);
             employeeName = itemView.findViewById(R.id.nombre_empleados);
+            employeeImg = itemView.findViewById(R.id.imgEmployeeAdapter);
         }
     }
 
@@ -92,6 +100,16 @@ public class EmpleadosAdapter extends RecyclerView.Adapter<EmpleadosAdapter.View
         // Seteamos el texto del TextView al nombre del empleado
         TextView nameTextView = holder.employeeName;
         nameTextView.setText(empleados.getNombre());
+        ImageView imgEmployee = holder.employeeImg;
+        byte[] img = empleados.getImageEmployee();
+        if(img != null) {
+            Bitmap prodPhoto = BitmapFactory.decodeByteArray(empleados.getImageEmployee(), 0, img.length);
+            imgEmployee.setImageBitmap(prodPhoto);
+        }else{
+            int imageResource = holder.c.getResources().getIdentifier("imgalhambra", "drawable", holder.c.getPackageName());
+            Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
+            imgEmployee.setImageDrawable(imagenDra);
+        }
 
         // Le añadimos un onClickListener a cada elemento de la lista
         holder.itemView.setOnClickListener(new OnClickListener() {

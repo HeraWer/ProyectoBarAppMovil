@@ -1,6 +1,9 @@
 package com.example.barreinolds;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
@@ -12,11 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-
+@RequiresApi(24)
 public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAdapter.ViewHolder> {
 
 
@@ -70,12 +78,15 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         final Context context = holder.c;
 
         ImageView itemImageView = holder.lProductosImageView;
-
-        String uri = product.getImage_movil();
-        int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
-        Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
-
-        itemImageView.setImageDrawable(imagenDra);
+       // File f = new File(holder.c.getDataDir(), "img/" + product.getId() + product.getName());
+        Bitmap prodPhoto = BitmapFactory.decodeByteArray(product.getImgBlob(), 0, product.getImgBlob().length);
+        itemImageView.setImageBitmap(prodPhoto);
+//        String uri = product.getImgBlob();
+//        int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
+//        Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
+//        InputStream inputStream =
+//        Drawable drawable  = Drawable.createFromStream(inputStream, uri.toString());
+//        itemImageView.setImageDrawable(imagenDra);
 
         TextView itemName = holder.lProductosName;
         itemName.setText(product.getName());
@@ -106,7 +117,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
                 mpsuma.start();
                 Product p = Search.compareProducts(pLPForOnClick, tForOnClick.getProductosComanda());
                 if (p == null)
-                    p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, pLPForOnClick.getImage_desktop(), pLPForOnClick.getImage_movil());
+                    p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, pLPForOnClick.getImage_desktop(), pLPForOnClick.getImage_movil(), pLPForOnClick.getImgBlob());
                 p.setCantidad(p.getCantidad() + 1);
                 itemQuantity.setText(String.valueOf(p.getCantidad()));
                 if (p.getCantidad() == 1) {

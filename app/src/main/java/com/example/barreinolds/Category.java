@@ -18,7 +18,7 @@ public class Category implements Serializable {
     private int id;
     private String nCategory;
     private ArrayList<Product> listProducts;
-    private InputStream imgBlob;
+    private byte[] imgBlob;
 
     /*
     Constructor vacio en el que se inicializa el array de productos
@@ -30,6 +30,7 @@ public class Category implements Serializable {
     /*
     Constructor donde se rellenan los campos y se inicializa el array de productos
      */
+
     public Category(int id, String nCategory) {
         this.id = id;
         this.nCategory = nCategory;
@@ -63,11 +64,11 @@ public class Category implements Serializable {
         this.listProducts = listProducts;
     }
 
-    public void setImgBlob(InputStream imgBlob){
+    public void setImgBlob(byte[] imgBlob){
         this.imgBlob = imgBlob;
     }
 
-    public InputStream getImgBlob(){
+    public byte[] getImgBlob(){
         return this.imgBlob;
     }
 }
