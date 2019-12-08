@@ -22,7 +22,7 @@ public class ConnectionClass {
     /*
     Atributos de clase y datos para la conexión
      */
-    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 40, (byte) 202};
+    private byte[] addr = new byte[]{(byte) 192, (byte) 168, (byte) 0, (byte) 11};
     public static final int PORT = 1234;
     InetAddress serverIP = InetAddress.getByAddress(addr);
     Socket socket = new Socket(serverIP, PORT);
@@ -50,28 +50,8 @@ public class ConnectionClass {
     del campo request de la clase Message
      */
     public Object sendMessage(Message message) throws IOException, ClassNotFoundException {
-        // Si el mensaje es CAMAREROS, enviamos mensaje y esperamos array de camareros
-        /*if(message.getRequest().equals("CAMAREROS")) {
             outputServer.writeObject(message);
             return inputClient.readObject();
-
-        // Si el mensaje es NUMMESAS, enviamos mensaje y esperamos total numero de mesas
-        }else if(message.getRequest().equals("NUMMESAS")){
-            outputServer.writeObject(message);
-            return inputClient.readObject();
-
-        // Si el mensaje es CATEGORIAS, enviamos mensaje y esperamos array de categorias
-        // Estas a su vez tienen un array de lista de productos
-        }else if(message.getRequest().equals("CATEGORIAS")){
-            outputServer.writeObject(message);
-            return inputClient.readObject();
-
-        // Si el mensaje es RECUPERARTICKET, enviamos mensaje y esperamos array de tickets (comandas)
-        }else if(message.getRequest().equals("RECUPERARTICKET")){*/
-            outputServer.writeObject(message);
-            return inputClient.readObject();
-        //}
-        //return null;
     }
 
     /*
