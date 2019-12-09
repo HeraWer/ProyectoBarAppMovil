@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
@@ -101,7 +102,7 @@ public class RegistroActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             InputStream is = compressBitmap(imageBitmap);
-
+            saveToInternalStorage(imageBitmap);
             try {
                 employee.setImageEmployee(getByteFromInput(is));
             } catch (IOException e) {
@@ -114,6 +115,7 @@ public class RegistroActivity extends AppCompatActivity {
         }
     }
 
+    // Pasamos el bipmap a byte para el InputStream a la hora de enviar al servidor
     private InputStream compressBitmap(Bitmap bmp) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -123,7 +125,8 @@ public class RegistroActivity extends AppCompatActivity {
         return is;
     }
 
-    public static void sendEmployee() {
+    // Este metodo llama al metodo que envia el objeto camarero al servidor
+    public static void sendEmployee(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -148,6 +151,32 @@ public class RegistroActivity extends AppCompatActivity {
             baos.write(buffer, 0, len);
         }
         return baos.toByteArray();
+    }
+
+    // Este metodo almacena la foto en la memoria interna del telefono.
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+
+        // Create imageDir
+        File mypath=new File(directory,employee.getNombre() + employee.getUsername() + ".JPG");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
     }
 }
 
