@@ -50,7 +50,6 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
     }
 
     static ArrayList<Product> lProductsAdapterArray;
-    Pedido p;
 
     public ListaProductosAdapter(ArrayList<Product> lProductsAdapterArray) {
         this.lProductsAdapterArray = lProductsAdapterArray;
@@ -78,15 +77,8 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         final Context context = holder.c;
 
         ImageView itemImageView = holder.lProductosImageView;
-       // File f = new File(holder.c.getDataDir(), "img/" + product.getId() + product.getName());
         Bitmap prodPhoto = BitmapFactory.decodeByteArray(product.getImgBlob(), 0, product.getImgBlob().length);
         itemImageView.setImageBitmap(prodPhoto);
-//        String uri = product.getImgBlob();
-//        int imageResource = holder.c.getResources().getIdentifier(uri, "drawable", holder.c.getPackageName());
-//        Drawable imagenDra = ContextCompat.getDrawable(holder.c, imageResource);
-//        InputStream inputStream =
-//        Drawable drawable  = Drawable.createFromStream(inputStream, uri.toString());
-//        itemImageView.setImageDrawable(imagenDra);
 
         TextView itemName = holder.lProductosName;
         itemName.setText(product.getName());
@@ -97,6 +89,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
         final TextView itemQuantity = holder.lProductosQuantity;
         final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
         final MediaPlayer mpsuma = MediaPlayer.create(holder.c, R.raw.sumar);
+        final MediaPlayer mpsumaCanaAqui = MediaPlayer.create(holder.c, R.raw.cana_aqui);
         final MediaPlayer mpresta = MediaPlayer.create(holder.c, R.raw.restar);
 
         Ticket t = Search.getTicket(Mesas.numMesa);
@@ -114,7 +107,10 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
             @Override
             public void onClick(View v) {
                 vb.vibrate(70);
-                mpsuma.start();
+                if(pLPForOnClick.getId() == 4)
+                    mpsumaCanaAqui.start();
+                else
+                    mpsuma.start();
                 Product p = Search.compareProducts(pLPForOnClick, tForOnClick.getProductosComanda());
                 if (p == null)
                     p = new Product(pLPForOnClick.getId(), pLPForOnClick.getName(), pLPForOnClick.getDescription(), pLPForOnClick.getPrice(), 0, pLPForOnClick.getImage_desktop(), pLPForOnClick.getImage_movil(), pLPForOnClick.getImgBlob());
@@ -123,12 +119,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
                 if (p.getCantidad() == 1) {
                     tForOnClick.getProductosComanda().add(p);
                 }
-
-//                        if (ticket != null) {
-//                            new EnviarTicket().execute(ticket);
-//                        }
-                // p = new Pedido();
-                //p.crearXML(getApplicationContext(), ticket.getProductosComanda());
+                ListaProductosAdapter.this.notifyDataSetChanged();
 
             }
         });
@@ -146,8 +137,6 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
                         tForOnClick.getProductosComanda().remove(pTicketForOnClick);
                     }
                 }
-                p = new Pedido();
-                p.crearXML(context, tForOnClick.getProductosComanda());
             }
         });
 

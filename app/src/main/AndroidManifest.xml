@@ -22,9 +22,6 @@
             android:name=".TicketActivity"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Pedido"
-            android:screenOrientation="fullSensor" />
-        <activity
             android:name=".ListaProductos"
             android:screenOrientation="fullSensor" />
         <activity
