@@ -7,7 +7,7 @@
     android:baselineAligned="false"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:background="#502F4058"
+    android:background="@drawable/borderradiusblue"
     android:layout_marginBottom="20dp"
     android:elevation="20dp"
     android:paddingTop="10dp"

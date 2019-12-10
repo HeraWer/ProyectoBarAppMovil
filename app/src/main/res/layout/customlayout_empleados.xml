@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linLayoutEmpleados"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:layout_marginBottom="30dp"
     android:background="@drawable/borderradiusblue"
     android:baselineAligned="false"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="horizontal"
-    android:elevation="20dp"
+    android:elevation="8dp"
+    android:padding="2dp"
     >
 
     <ImageView
         android:id="@+id/imgEmployeeAdapter"
         android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
         android:src="@drawable/ic_launcher_background" />
 
     <TextView

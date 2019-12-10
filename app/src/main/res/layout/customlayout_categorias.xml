@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
     android:layout_marginLeft="25dp"
-    android:layout_marginBottom="-5dp">
+    android:layout_marginTop="20dp"
+    android:background="@drawable/borderradiusblue">
 
+    <ImageView
+        android:id="@+id/imagenCategoriaCustom"
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:layout_height="60dp"
+        android:src="@drawable/tiki_mask"/>
 
     <TextView
         android:id="@+id/nombre_categoria"
-        android:layout_width="108dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/imgalhambra"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:divider="#1a1a1a"
-        android:dividerHeight="15dp"
+        android:dividerHeight="0dp"
         android:elevation="20dp"
         android:fontFamily="Montserrat"
-        android:paddingTop="10dp"
         android:text="Categoria"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="20dp"
         android:textStyle="normal" />
 
-</RelativeLayout>
+</LinearLayout>

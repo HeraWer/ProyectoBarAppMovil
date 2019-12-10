@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brown"
+    android:background="@drawable/backgroundtiki"
     tools:context=".Empleados">
 
     <TextView
         android:id="@+id/nombre_empleados"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@color/orange"
+        android:background="@color/otherbrown"
         android:fontFamily="Montserrat"
         android:paddingTop="10dp"
         android:text="@string/empleados"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="36dp"
         android:textStyle="normal"
-        android:textColor="@android:color/white"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -47,7 +47,7 @@
         android:layout_marginStart="258dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/Base"
+        android:background="@drawable/borderradiusblue"
         android:drawableBottom="@drawable/add_employee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

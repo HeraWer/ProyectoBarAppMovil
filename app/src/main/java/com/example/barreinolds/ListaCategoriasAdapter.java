@@ -11,6 +11,7 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,12 +25,14 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView categoriaName;
+        public ImageView categoriaPhoto;
         public Context c;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             categoriaName = itemView.findViewById(R.id.nombre_categoria);
+            categoriaPhoto = itemView.findViewById(R.id.imagenCategoriaCustom);
         }
     }
 
@@ -61,9 +64,10 @@ public class ListaCategoriasAdapter extends RecyclerView.Adapter<ListaCategorias
         //Bitmap prodPhoto = BitmapFactory.decodeByteArray(category.getImgBlob(), 0, category.getImgBlob().length);
         ByteArrayInputStream bais = new ByteArrayInputStream(category.getImgBlob());
         TextView nameTextView = holder.categoriaName;
+        ImageView photoImageView = holder.categoriaPhoto;
         nameTextView.setText(category.getnCategory());
         Drawable bg = Drawable.createFromStream(bais, category.getId() + category.getnCategory().toLowerCase());
-        nameTextView.setBackground(bg);
+        photoImageView.setImageDrawable(bg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
