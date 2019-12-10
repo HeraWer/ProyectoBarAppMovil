@@ -11,7 +11,7 @@
         android:id="@+id/nombre_mesa"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@color/actionBar"
+        android:background="@color/otherbrown"
         android:fontFamily="Montserrat"
         android:paddingTop="10dp"
         android:text="@string/mesas"

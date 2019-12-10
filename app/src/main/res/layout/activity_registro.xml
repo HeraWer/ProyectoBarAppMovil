@@ -7,11 +7,13 @@
     tools:context=".RegistroActivity"
     android:background="@drawable/backgroundtiki">
 
+
+
     <TextView
         android:id="@+id/nombre_registro"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@color/actionBar"
+        android:background="@color/otherbrown"
         android:fontFamily="Montserrat"
         android:paddingTop="10dp"
         android:text="@string/registro"
@@ -25,52 +27,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/contraseñaEmployee"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-
+        android:layout_margin="20dp"
+        android:background="@drawable/borderradiusblue"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
-
-    <EditText
-        android:id="@+id/nameEmployee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Nombre"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="299dp"
-        android:layout_height="42dp"
-        android:text="Al pulsar aceptar se abrira la camara para ingresar una fotografia para el perfil."
+        app:layout_constraintTop_toBottomOf="@+id/nombre_registro"
+        tools:layout_editor_absoluteX="24dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        android:gravity="center">
+
+
+
+        <EditText
+            android:id="@+id/nameEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textAlignment="center"
+
+            android:layout_margin="10dp" />
+
+        <EditText
+            android:id="@+id/userNameEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre Usuario"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+
+            android:padding="5dp"
+            android:layout_margin="10dp" />
+
+        <EditText
+            android:id="@+id/contraseñaEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="5dp"
+            android:textAlignment="center"
+
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="299dp"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:text="Al pulsar aceptar se abrira la camara para ingresar una fotografia para el perfil."
+            android:textAlignment="center"
+            android:layout_margin="10dp" />
+
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonAceptRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/notServedProduct"
+        android:background="@drawable/buttons_bg"
         android:text="Aceptar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +107,7 @@
         android:id="@+id/buttonCancelRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/notServedProduct"
+        android:background="@drawable/buttons_bg"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,18 +116,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95" />
 
-    <EditText
-        android:id="@+id/userNameEmployee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Nombre Usuario"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

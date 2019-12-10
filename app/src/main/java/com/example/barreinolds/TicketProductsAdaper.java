@@ -76,9 +76,9 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         final ViewHolder holderForOnClick = holder;
 
         if(product.isServed())
-            holder.layoutTicket.setBackground(holder.c.getDrawable(R.drawable.served_products_background));
+            holder.layoutTicket.setBackground(holder.c.getDrawable(R.drawable.served_product_bg));
         else
-            holder.layoutTicket.setBackground(holder.c.getDrawable(R.drawable.not_served_products_background));
+            holder.layoutTicket.setBackground(holder.c.getDrawable(R.drawable.not_served_product_bg));
 
         // Set item views based on your views and data model
         ImageView imageImageView = holder.productImageTicket;
@@ -93,13 +93,13 @@ public class TicketProductsAdaper extends RecyclerView.Adapter<TicketProductsAda
         nameTextView.setText(product.getName());
 
         TextView quantityTextView = holder.productQuantityTicket;
-        quantityTextView.setText(String.valueOf(product.getCantidad()));
+        quantityTextView.setText(String.valueOf(product.getCantidad()) + "x");
 
         TextView priceTextView = holder.productPriceTicket;
-        priceTextView.setText(product.getPrice());
+        priceTextView.setText(product.getPrice() + "€");
 
         TextView totalTextView = holder.productTotalTicket;
-        totalTextView.setText(String.format("%.2f", NumberFormat.round(Float.parseFloat(product.getPrice()) * product.getCantidad())));
+        totalTextView.setText(String.format("%.2f", NumberFormat.round(Float.parseFloat(product.getPrice()) * product.getCantidad())) + "€");
 
         final Vibrator vb = (Vibrator) holder.c.getSystemService(Context.VIBRATOR_SERVICE);
         final MediaPlayer mp = MediaPlayer.create(holder.c, R.raw.restar);

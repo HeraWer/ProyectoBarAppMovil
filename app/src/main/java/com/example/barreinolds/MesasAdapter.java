@@ -62,7 +62,7 @@ public class MesasAdapter extends RecyclerView.Adapter<MesasAdapter.ViewHolder> 
         nameTextView.setText(mesas);
 
         if(Search.getTicket(Integer.parseInt(mesas)) != null) {
-            nameTextView.setBackground(holder.c.getDrawable(R.drawable.borderradiusred));
+            nameTextView.setBackground(holder.c.getDrawable(R.drawable.served_product_bg));
         }else{
             nameTextView.setBackground(holder.c.getDrawable(R.drawable.borderradiusblue));
         }

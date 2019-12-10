@@ -14,12 +14,14 @@
         android:roundIcon="@drawable/tiki_mask"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".RegistroActivity"></activity>
         <activity
             android:name=".Empleados"
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".TicketActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".RegistroActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".ListaProductos"

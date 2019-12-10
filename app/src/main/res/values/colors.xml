@@ -7,8 +7,8 @@
     <color name="actionBar">#2F4058</color>
     <color name="divider">#00000000</color>
     <color name="busyTable">#70800000</color>
-    <color name="servedProduct">#8A308D27</color>
-    <color name="notServedProduct">#502F4058</color>
+    <color name="servedProduct">#2B5A25</color>
+    <color name="notServedProduct">#976C3D</color>
     <color name="brown">#eff8aa</color>
     <color name="orange">#FCB627</color>
     <color name="otherbrown">#391A18</color>
@@ -16,4 +16,5 @@
     <color name="elementTesting">#91A871</color>
     <color name="backgroundElement">#6B4C2C</color>
     <color name="backgroundBorder">#0D0302</color>
+    <color name="buttonsbg">#522927</color>
 </resources>

@@ -69,6 +69,9 @@ public class RegistroActivity extends AppCompatActivity {
                     employee.setNombre(nameEmployee.getText().toString());
                     employee.setUsername(usuarioEmployee.getText().toString());
                     employee.setPassword(passwordEmployee.getText().toString());
+                    nameEmployee.setText("");
+                    usuarioEmployee.setText("");
+                    passwordEmployee.setText("");
                     dispatchTakePictureIntent();
                 }
 
@@ -81,6 +84,9 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 vb.vibrate(70);
                 mp.start();
+                nameEmployee.setText("");
+                usuarioEmployee.setText("");
+                passwordEmployee.setText("");
                 Intent intent = new Intent(getApplicationContext(), Empleados.class);
                 startActivity(intent);
             }

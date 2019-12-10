@@ -12,7 +12,7 @@
         android:id="@+id/nombre_producto"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="#2F4058"
+        android:background="@color/otherbrown"
         android:paddingTop="10dp"
         android:textAlignment="center"
         android:textColor="@android:color/white"
