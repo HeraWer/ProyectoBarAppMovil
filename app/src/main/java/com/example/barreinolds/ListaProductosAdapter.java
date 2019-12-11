@@ -119,7 +119,7 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
                 if (p.getCantidad() == 1) {
                     tForOnClick.getProductosComanda().add(p);
                 }
-                ListaProductosAdapter.this.notifyDataSetChanged();
+                //ListaProductosAdapter.this.notifyDataSetChanged();
 
             }
         });
@@ -131,10 +131,11 @@ public class ListaProductosAdapter extends RecyclerView.Adapter<ListaProductosAd
                 vb.vibrate(70);
                 mpresta.start();
                 if (!itemQuantity.getText().equals("0")) {
-                    pTicketForOnClick.setCantidad(pTicketForOnClick.getCantidad() - 1);
-                    itemQuantity.setText(String.valueOf(pTicketForOnClick.getCantidad()));
-                    if (pTicketForOnClick.getCantidad() <= 0) {
-                        tForOnClick.getProductosComanda().remove(pTicketForOnClick);
+                    Product p = Search.getProductFromTicket(pLPForOnClick.getId(), Mesas.numMesa);
+                    p.setCantidad(p.getCantidad() - 1);
+                    itemQuantity.setText(String.valueOf(p.getCantidad()));
+                    if (p.getCantidad() <= 0) {
+                        tForOnClick.getProductosComanda().remove(p);
                     }
                 }
             }

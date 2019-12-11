@@ -12,6 +12,14 @@ public class Search {
         return null;
     }
 
+    public static Product getProductFromTicket(int id, int mesa){
+        for(Product p : getTicket(mesa).getProductosComanda()){
+            if(p.getId() == id)
+                return p;
+        }
+        return null;
+    }
+
     public static float getTotalPrice(Ticket t){
         float total = 0f;
         for(Product p : t.getProductosComanda()){
